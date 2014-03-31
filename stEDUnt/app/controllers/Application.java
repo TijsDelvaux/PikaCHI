@@ -51,6 +51,10 @@ public class Application extends Controller {
                 );
             }
         }
+        
+        public static Result start(Student student){
+        	return ok(views.html.start.render(student));
+        }
 
     }
 
