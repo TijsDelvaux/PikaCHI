@@ -1,0 +1,24 @@
+@(student: Student)
+
+@main("Start") {
+    
+<html>
+    <body>
+    
+    <form action=@(Application.start(student))>
+    <input type="submit" value="@student.getLanguage().myTutorAdvertisements()">
+    </form>
+    
+    <form action="/profile">
+    <input type="submit" value="@student.getLanguage().messages()">
+    </form>
+    
+    <form action="/reviews">
+    <input type="submit" value="@student.getLanguage().viewAdvertisements()">
+    </form>
+    
+    </body>
+</html>
+        
+    
+}
