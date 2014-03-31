@@ -15,6 +15,9 @@ public class Application extends Controller {
         return ok(index.render("Your new application is ready."));
     }
     
+    public static Result start(Student student){
+    	return ok(views.html.start.render(student));
+    }
     
     public static Result login() {
         return ok(
@@ -51,10 +54,7 @@ public class Application extends Controller {
                 );
             }
         }
-        
-        public static Result start(Student student){
-        	return ok(views.html.start.render(student));
-        }
+
 
     }
 
