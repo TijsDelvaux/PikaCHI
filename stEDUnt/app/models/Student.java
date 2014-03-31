@@ -34,7 +34,7 @@ public class Student extends Model{
             .eq("password", password).findUnique();
     }
 	
-	public static Language getLanguage(){
+	public Language getLanguage(){
 		return language;
 	}
 	

@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Student;
 import play.*;
 import play.mvc.*;
 
@@ -19,6 +20,11 @@ public class Application extends Controller {
         return ok(
             login.render(Form.form(Login.class))
         );
+    }
+    
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        return ok();
     }
     
     public static class Login {
