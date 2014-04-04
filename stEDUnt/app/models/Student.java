@@ -17,7 +17,7 @@ public class Student extends Model{
     public String email;
     public String name;
     public String password;
-    public Language language;
+    public Language language = Language.Nederlands;
     
 	public Student(String email, String name, String password){
 		studentAdv = null;

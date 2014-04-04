@@ -13,4 +13,4 @@ GET     /login                  controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 
 # start page         
-GET     /start                  controllers.Application.start()
+GET     /start                 controllers.Application.start()
