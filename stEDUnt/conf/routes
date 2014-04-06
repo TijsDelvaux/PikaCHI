@@ -14,5 +14,8 @@ POST    /login                  controllers.Application.authenticate()
 
 GET     /logout                     controllers.Application.logout()
 
+GET     /register                  controllers.Application.register()
+POST    /register                  controllers.Application.registerNewUser()
+															
 # start page         
 GET     /start                 controllers.Application.start()

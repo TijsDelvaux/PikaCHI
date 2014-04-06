@@ -1,0 +1,45 @@
+@(form: play.data.Form[Application.Register])
+
+
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <header>
+            <a href="@routes.Application.index" id="logo"><span>Register</span></a>
+        </header>
+        
+    @helper.form(routes.Application.registerNewUser) {
+   <h1>Register</h1>
+
+   <p>
+       <input type="name" name="name" placeholder="Name">
+   </p>
+   <p>
+       <input type="email" name="email" placeholder="Email" value="@form("email").value">
+   </p>
+   <p>
+       <input type="password" name="password" placeholder="Password">
+   </p>
+   <p>
+       <button type="submit">Register</button>
+   </p>
+   
+   @if(form.hasGlobalErrors) {
+    <p class="error">
+        @form.globalError.message
+    </p>
+	}
+
+	@if(flash.contains("success")) {
+	    <p class="success">
+	        @flash.get("success")
+	    </p>
+	}
+
+
+}
+    
+    </body>
+</html>
