@@ -11,25 +11,45 @@ import views.html.*;
 
 public class Application extends Controller {
 
+	@Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+		return ok(start.render());
+//        return ok(index.render("Your new application is ready."));
     }
     
     public static Result start(){
-    	return ok(views.html.start.render(new Student("test@test.test","test","test")));
+    	return ok(start.render());
+    	//return ok(views.html.start.render(new Student("test@test.test","test","test")));
     }
     
     public static Result login() {
         return ok(
-            login.render(Form.form(Login.class))
+            login.render(form(Login.class))
         );
     }
     
-    public static Result authenticate() {
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        return ok();
+    public static Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+            routes.Application.login()
+        );
     }
     
+      public static Result authenticate() {
+            Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+            if (loginForm.hasErrors()) {
+                return badRequest(login.render(loginForm));
+            } else {
+                session().clear();
+                session("email", loginForm.get().email);
+                return redirect(
+                    routes.Application.start()
+                );
+            }
+        }
+            
+            
     public static class Login {
 
         public String email;
@@ -42,18 +62,7 @@ public class Application extends Controller {
             return null;
         }
         
-        public static Result authenticate() {
-            Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-            if (loginForm.hasErrors()) {
-                return badRequest(login.render(loginForm));
-            } else {
-                session().clear();
-                session("email", loginForm.get().email);
-                return redirect(
-                    routes.Application.index()
-                );
-            }
-        }
+
 
 
     }

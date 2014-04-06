@@ -9,9 +9,9 @@ import com.avaje.ebean.*;
 @Entity
 public class Student extends Model{
 	
-	private StudentAdvertisement studentAdv;
-	private TutorAdvertisement tutorAdv;
-	private List<Message> messages;
+//	private StudentAdvertisement studentAdv;
+//	private TutorAdvertisement tutorAdv;
+//	private List<Message> messages;
 	
     @Id
     public String email;
@@ -20,9 +20,13 @@ public class Student extends Model{
     public Language language = Language.Nederlands;
     
 	public Student(String email, String name, String password){
-		studentAdv = null;
-		tutorAdv = null;
-		messages = new ArrayList<Message>();
+//		studentAdv = null;
+//		tutorAdv = null;
+//		messages = new ArrayList<Message>();
+		this.email = email;
+		this.name = name;
+		this.password = password;
+		
 	}
 	
 	public static Finder<String,Student> find = new Finder<String,Student>(

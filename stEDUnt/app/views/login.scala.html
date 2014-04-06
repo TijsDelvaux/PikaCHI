@@ -1,4 +1,4 @@
-@(form: Form[Application.Login])
+@(form: play.data.Form[Application.Login])
 
 
 <html>
@@ -27,7 +27,14 @@
     <p class="error">
         @form.globalError.message
     </p>
-}
+	}
+
+	@if(flash.contains("success")) {
+	    <p class="success">
+	        @flash.get("success")
+	    </p>
+	}
+
 
 }
     

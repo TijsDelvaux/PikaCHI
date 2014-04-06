@@ -1,22 +1,11 @@
-@(student: Student)
 
 @main("Start") {
     
 <html>
     <body>
     
-    <form action=@(Application.start())>
-    <input type="submit" value="@student.getLanguage().myTutorAdvertisements()">
-    </form>
-    
-    <form action="/profile">
-    <input type="submit" value="@student.getLanguage().messages()">
-    </form>
-    
-    <form action="/reviews">
-    <input type="submit" value="@student.getLanguage().viewAdvertisements()">
-    </form>
-    
+                <a href="@routes.Application.logout()">Logout</a>
+
     </body>
 </html>
         
