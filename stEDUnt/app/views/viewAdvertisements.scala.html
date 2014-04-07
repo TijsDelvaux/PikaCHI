@@ -1,0 +1,29 @@
+@(student: Student, advertisements: List[Advertisement])
+
+
+@main("Start") {
+    
+<html>
+    <body>
+    
+                    <header>
+        <hgroup>
+            <h1>All Advertisements</h1>
+            Logged in as @student.name
+        </hgroup>
+    </header>
+
+    <article  class="advertisements">
+    	@for(index <- 0 until advertisements.size){
+    		<h2> Advertisement @index </h2>
+   			 Student: @advertisements(index).getStudent().name
+   			 Studies: @advertisements(index).getStudies()
+   			 Description: @advertisements(index).getDescription() 
+   		}
+    </article>
+
+    </body>
+</html>
+        
+    
+}

@@ -1,12 +1,11 @@
 package controllers;
 
+import models.Advertisement;
 import models.Student;
 import play.*;
 import play.mvc.*;
-
 import play.data.*; 
 import static play.data.Form.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -71,6 +70,13 @@ public class Application extends Controller {
                 );
             }
         }
+      
+  	@Security.Authenticated(Secured.class)
+      public static Result viewAllAdvertisements() {  	  
+    	  return ok(
+    	            viewAdvertisements.render(Student.find.byId(request().username()), Advertisement.find.all())
+    	        );
+      }
             
             
     public static class Login {

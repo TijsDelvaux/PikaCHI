@@ -11,6 +11,8 @@ public class Global extends GlobalSettings {
     	if (Student.find.findRowCount() == 0) {
 	    	Student s = new Student("a@a.com", "name",	"pass");
 	    	s.save();
+	    	Advertisement a = new Advertisement(s, "aa", "bb");
+	    	a.save();
     	}
     }
 }

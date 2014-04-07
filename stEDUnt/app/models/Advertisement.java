@@ -1,10 +1,36 @@
 package models;
 
-public abstract class Advertisement {
+import java.util.*;
+import javax.persistence.*;
+import play.db.ebean.*;
+
+@Entity
+public class Advertisement extends Model {
 	
-	private final Student student;
-	private String studies;
-	private String description;
+	@Id
+    public Long id;
+	@ManyToOne
+	public Student student;
+	public String studies;
+	public String description;
+	
+	//static methods
+	
+	public static Advertisement create(Student student, String studies, String description) {
+		Advertisement ad = new Advertisement(student, studies, description);
+		ad.save();
+        return ad;
+    }
+	
+    public static Model.Finder<Long,Advertisement> find = new Model.Finder(Long.class, Advertisement.class);
+	
+    public static List<Advertisement> findInvolving(String user) {
+        return find.where()
+            .eq("members.email", user)
+            .findList();
+    }
+    
+    //actual implementation
 	
 	public Advertisement(Student student, String studies, String description){
 		this.studies = studies;
