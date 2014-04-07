@@ -77,6 +77,27 @@ public class Application extends Controller {
     	            viewAdvertisements.render(Student.find.byId(request().username()), Advertisement.find.all())
     	        );
       }
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result addNewAdvertisementForm() {  	  
+        Form<AdvertisementForm> adForm = Form.form(AdvertisementForm.class).bindFromRequest();
+        if (adForm.hasErrors()) {
+            return badRequest(postNewAdvertisement.render(adForm));
+        } else {
+            return redirect(
+                routes.Application.start()
+            );
+        }
+    }
+    
+  	
+    public static Result addNewAdvertisement() {
+    	return ok(
+                postNewAdvertisement.render(form(AdvertisementForm.class))
+            );
+    }
+    
+    
             
             
     public static class Login {
@@ -101,17 +122,37 @@ public class Application extends Controller {
         
         public String validate() {
         	
-        	
             if (email.length()==0 | password.length()==0 | name.length()==0) {
               return "Please fill in all required forms";
             }
             
-            System.out.println("added new user");
-            
         	Student s = new Student(email, name, password);
         	s.save();
-            
+        	
             return null;
+        }
+    }
+    
+    
+    
+    public static class AdvertisementForm {
+
+        public String studies;
+    	public String description;
+        
+        public String validate() {        	
+        	
+            if (studies.length()==0 | description.length()==0) {
+              return "Please fill in all required forms";
+            }
+            
+            if(request().username() == null){
+            	return "username is null, make sure you are logged in";
+            }
+            
+            models.Advertisement.create(Student.find.byId(request().username()), studies, description);
+            return null;
+            
         }
 
     }
