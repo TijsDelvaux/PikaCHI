@@ -1,0 +1,89 @@
+@(tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement)
+
+
+<html>
+    <head>
+        <title>New StudentAdvertisement</title>
+    </head>
+    <body>
+
+     <header>
+            <span>New TutorAdvertisement</span>
+        </header>
+        
+        @if(tutorAdv != null) {
+        	You have already posted your tutoring advertisement, please edit:
+        	
+        	
+        	 @helper.form(routes.Application.addNewTutAdvertisementForm) {
+					   <h1>New TutorAdvertisement</h1>
+					
+					   <p>
+					       <input type="studies" name="studies" placeholder="studies" value="@tutorAdv.getStudies()">
+					   </p>
+					   <p>
+					       <input type="description" name="description" placeholder="description" value="@tutorAdv.getDescription()">
+					   </p>
+					   <p>
+					       <input type="price" name="price" placeholder="price" value="@tutorAdv.getPrice()">
+					   </p>
+					   <p>
+					       <button type="submit">Submit</button>
+					   </p>
+					   
+					   
+					   @if(tuForm.hasGlobalErrors) {
+					    <p class="error">
+					        @tuForm.globalError.message
+					    </p>
+						}
+					
+						@if(flash.contains("success")) {
+						    <p class="success">
+						        @flash.get("success")
+						    </p>
+						}
+        	
+        	}
+        	
+        	
+        }else{
+        
+    @helper.form(routes.Application.addNewTutAdvertisementForm) {
+   <h1>New TutorAdvertisement</h1>
+
+   <p>
+       <input type="studies" name="studies" placeholder="studies" value="@tuForm("studies").value">
+   </p>
+   <p>
+       <input type="description" name="description" placeholder="description" value="@tuForm("description").value">
+   </p>
+   <p>
+       <input type="price" name="price" placeholder="price" value="@tuForm("price").value">
+   </p>
+   <p>
+       <button type="submit">Submit</button>
+   </p>
+   
+   
+   @if(tuForm.hasGlobalErrors) {
+    <p class="error">
+        @tuForm.globalError.message
+    </p>
+	}
+
+	@if(flash.contains("success")) {
+	    <p class="success">
+	        @flash.get("success")
+	    </p>
+	}
+	
+	}
+
+
+}
+
+
+    
+    </body>
+</html>

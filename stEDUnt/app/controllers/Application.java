@@ -2,6 +2,8 @@ package controllers;
 
 import models.Advertisement;
 import models.Student;
+import models.StudentAdvertisement;
+import models.TutorAdvertisement;
 import play.*;
 import play.mvc.*;
 import play.data.*; 
@@ -74,28 +76,58 @@ public class Application extends Controller {
   	@Security.Authenticated(Secured.class)
       public static Result viewAllAdvertisements() {  	  
     	  return ok(
-    	            viewAdvertisements.render(Student.find.byId(request().username()), Advertisement.find.all())
+    	            viewAdvertisements.render(
+    	            		Student.find.byId(request().username()), 
+    	            		StudentAdvertisement.find.all(),
+    	            		TutorAdvertisement.find.all()
+    	            		)
     	        );
       }
   	
+
+  	
   	@Security.Authenticated(Secured.class)
-    public static Result addNewAdvertisementForm() {  	  
-        Form<AdvertisementForm> adForm = Form.form(AdvertisementForm.class).bindFromRequest();
+    public static Result addNewStudAdvertisementForm() {  
+        	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
+            if (adForm.hasErrors()) {
+                return badRequest(postNewStudentAdvertisement.render(adForm));
+            } else {
+                return redirect(
+                    routes.Application.start()
+                );
+            }
+  		}
+  		
+  		
+  	@Security.Authenticated(Secured.class)
+  	    public static Result addNewTutAdvertisementForm() {  
+  		Form<TutorAdvertisementForm> adForm = Form.form(TutorAdvertisementForm.class).bindFromRequest();
         if (adForm.hasErrors()) {
-            return badRequest(postNewAdvertisement.render(adForm));
+            return badRequest(postNewTutorAdvertisement.render(adForm, null));
         } else {
             return redirect(
                 routes.Application.start()
             );
         }
-    }
+        }
+
+        
     
-  	
-    public static Result addNewAdvertisement() {
+   
+  	@Security.Authenticated(Secured.class)
+    public static Result addNewStudAdvertisement() {
     	return ok(
-                postNewAdvertisement.render(form(AdvertisementForm.class))
+                postNewStudentAdvertisement.render(form(StudentAdvertisementForm.class))
             );
     }
+  	
+    @Security.Authenticated(Secured.class)
+    public static Result addNewTutAdvertisement() {
+    	return ok(
+                postNewTutorAdvertisement.render(form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
+            );
+    }
+    
     
     
             
@@ -135,7 +167,7 @@ public class Application extends Controller {
     
     
     
-    public static class AdvertisementForm {
+    public static class StudentAdvertisementForm {
 
         public String studies;
     	public String description;
@@ -150,7 +182,30 @@ public class Application extends Controller {
             	return "username is null, make sure you are logged in";
             }
             
-            models.Advertisement.create(Student.find.byId(request().username()), studies, description);
+            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description);
+            return null;
+            
+        }
+
+    }
+    
+    public static class TutorAdvertisementForm {
+
+        public String studies;
+    	public String description;
+    	public double price;
+        
+        public String validate() {        	
+        	
+            if (studies.length()==0 | description.length()==0) {
+              return "Please fill in all required forms";
+            }
+            
+            if(request().username() == null){
+            	return "username is null, make sure you are logged in";
+            }
+            
+            models.TutorAdvertisement.create(Student.find.byId(request().username()), studies, description, price);
             return null;
             
         }

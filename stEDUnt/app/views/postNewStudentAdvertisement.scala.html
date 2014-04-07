@@ -1,0 +1,43 @@
+@(stForm: play.data.Form[Application.StudentAdvertisementForm])
+
+
+<html>
+    <head>
+        <title>New StudentAdvertisement</title>
+    </head>
+    <body>
+        <header>
+            <span>New StudentAdvertisement</span>
+        </header>
+        
+    @helper.form(routes.Application.addNewStudAdvertisementForm) {
+   <h1>New StudentAdvertisement</h1>
+
+   <p>
+       <input type="studies" name="studies" placeholder="studies" value="@stForm("studies").value">
+   </p>
+   <p>
+       <input type="description" name="description" placeholder="description" value="@stForm("description").value">
+   </p>
+   <p>
+       <button type="submit">Submit</button>
+   </p>
+   
+   
+   @if(stForm.hasGlobalErrors) {
+    <p class="error">
+        @stForm.globalError.message
+    </p>
+	}
+
+	@if(flash.contains("success")) {
+	    <p class="success">
+	        @flash.get("success")
+	    </p>
+	}
+
+
+}
+    
+    </body>
+</html>

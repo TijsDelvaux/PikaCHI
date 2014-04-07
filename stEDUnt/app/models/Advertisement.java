@@ -4,7 +4,8 @@ import java.util.*;
 import javax.persistence.*;
 import play.db.ebean.*;
 
-@Entity
+
+@MappedSuperclass 
 public class Advertisement extends Model {
 	
 	@Id

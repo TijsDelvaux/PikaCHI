@@ -1,4 +1,4 @@
-@(student: Student, advertisements: List[Advertisement])
+@(student: Student, studAdvertisements: List[StudentAdvertisement], tutAdvertisements: List[TutorAdvertisement])
 
 
 @main("Start") {
@@ -6,19 +6,30 @@
 <html>
     <body>
     
-                    <header>
+     <header>
         <hgroup>
             <h1>All Advertisements</h1>
             Logged in as @student.name
         </hgroup>
     </header>
-
+	<h2> Student Advertisement</h2>
     <article  class="advertisements">
-    	@for(index <- 0 until advertisements.size){
+    	@for(index <- 0 until studAdvertisements.size){
     		<h2> Advertisement @index </h2>
-   			 Student: @advertisements(index).getStudent().name
-   			 Studies: @advertisements(index).getStudies()
-   			 Description: @advertisements(index).getDescription() 
+   			 Student: @studAdvertisements(index).getStudent().name</br>
+   			 Studies: @studAdvertisements(index).getStudies()</br>
+   			 Description: @studAdvertisements(index).getDescription() 
+   		}
+    </article>
+    
+    <h2> Tutor Advertisement</h2>
+    <article  class="advertisements">
+    	@for(index <- 0 until tutAdvertisements.size){
+    		<h2> Advertisement @index </h2>
+   			 Student: @tutAdvertisements(index).getStudent().name</br>
+   			 Studies: @tutAdvertisements(index).getStudies()</br>
+   			 Description: @tutAdvertisements(index).getDescription() </br>
+   			 Price: @tutAdvertisements(index).getPrice() 
    		}
     </article>
 

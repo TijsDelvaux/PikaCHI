@@ -19,8 +19,11 @@ POST    /register                  controllers.Application.registerNewUser()
 
 GET     /advertisements            controllers.Application.viewAllAdvertisements()
 
-GET		/newAdv						controllers.Application.addNewAdvertisement()
-POST	/newAdv					controllers.Application.addNewAdvertisementForm()
+GET		/newStAdv						controllers.Application.addNewStudAdvertisement()
+POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
+
+GET		/newTutAdv						controllers.Application.addNewTutAdvertisement()
+POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm()
 
 															
 # start page         
