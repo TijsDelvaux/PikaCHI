@@ -16,7 +16,7 @@
     <article  class="advertisements">
     	@for(index <- 0 until studAdvertisements.size){
     		<h2> Advertisement @index </h2>
-   			 Student: @studAdvertisements(index).getStudent().name</br>
+   			 Student: @studAdvertisements(index).getStudent().getName()</br>
    			 Studies: @studAdvertisements(index).getStudies()</br>
    			 Description: @studAdvertisements(index).getDescription() 
    		}
@@ -26,7 +26,7 @@
     <article  class="advertisements">
     	@for(index <- 0 until tutAdvertisements.size){
     		<h2> Advertisement @index </h2>
-   			 Student: @tutAdvertisements(index).getStudent().name</br>
+   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
    			 Studies: @tutAdvertisements(index).getStudies()</br>
    			 Description: @tutAdvertisements(index).getDescription() </br>
    			 Price: @tutAdvertisements(index).getPrice() 

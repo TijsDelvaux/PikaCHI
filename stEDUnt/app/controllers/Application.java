@@ -158,6 +158,14 @@ public class Application extends Controller {
             );
     }
     
+  	@Security.Authenticated(Secured.class)
+    public static Result viewMyAdvertisements() {
+
+    	return ok(
+                myAdvertisements.render(Student.find.byId(request().username()))
+            );
+    }
+    
     
     
   	@Security.Authenticated(Secured.class)
