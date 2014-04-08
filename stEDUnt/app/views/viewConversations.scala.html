@@ -1,0 +1,32 @@
+@(student: Student, conversations: List[Conversation])
+
+
+@main("Start") {
+    
+<html>
+    <body>
+    
+     <header>
+        <hgroup>
+            <h1>All Conversations</h1>
+            Logged in as @student.name
+        </hgroup>
+    </header>
+	<h2> Conversations</h2>
+    <article  class="conversations">
+    	@for(index <- 0 until conversations.size){
+    		<h2> Conversation @index </h2>
+   			 Student1: @conversations(index).getParticipants.get(0).getName()</br>
+   			 Student2: @conversations(index).getParticipants.get(1).getName()</br>
+   			 
+   			  <a href="@routes.Application.viewMyConversation(conversations(index).id)">Read conversation</a>
+   			  
+   		}
+    </article>
+
+
+    </body>
+</html>
+        
+    
+}

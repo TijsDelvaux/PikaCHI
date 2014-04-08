@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Advertisement;
+import models.Conversation;
 import models.Student;
 import models.StudentAdvertisement;
 import models.TutorAdvertisement;
@@ -129,6 +130,31 @@ public class Application extends Controller {
     }
     
     
+    
+  	@Security.Authenticated(Secured.class)
+    public static Result viewMyConversations() {
+
+    	return ok(
+                viewConversations.render(Student.find.byId(request().username()),  Conversation.findConversationsOfStudent(Student.find.byId(request().username())))
+            );
+    }
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result viewMyConversation(Long id) {
+  		Student s = Student.find.byId(request().username());
+  		Conversation c = Conversation.find.byId(id.toString());
+  		
+  		if(!c.getParticipants().contains(s)){ //unauthorized access!
+  			return redirect(
+  	                routes.Application.viewMyConversations()
+  	            );
+  		}
+  		else{
+  		return ok(
+                viewConversation.render(s,c)
+            );
+  		}
+    }
     
             
             

@@ -1,0 +1,30 @@
+@(student: Student, conversation: Conversation)
+
+
+@main("Start") {
+    
+<html>
+    <body>
+    
+     <header>
+        <hgroup>
+            <h1>Conversation</h1>
+            Logged in as @student.name
+        </hgroup>
+    </header>
+	<h2> Conversation</h2>
+    <article  class="conversations">
+    	@for(index <- 0 until conversation.messages.size){
+    		<h2> Conversation @index </h2>
+   			 Date: @conversation.messages(index).getDate()</br>
+   			 Text: @conversation.messages(index).getText()</br>
+			 
+   		}
+    </article>
+
+
+    </body>
+</html>
+        
+    
+}

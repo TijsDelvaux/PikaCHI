@@ -25,6 +25,9 @@ POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
 GET		/newTutAdv						controllers.Application.addNewTutAdvertisement()
 POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm()
 
+#GET     /messages            controllers.Application.viewMyMessages()
+GET		/conversations		 controllers.Application.viewMyConversations()
+GET		/conversation		 controllers.Application.viewMyConversation(id:Long)
 															
 # start page         
 GET     /start                 controllers.Application.start()
