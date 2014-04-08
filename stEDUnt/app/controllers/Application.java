@@ -2,6 +2,7 @@ package controllers;
 
 import models.Advertisement;
 import models.Conversation;
+import models.Message;
 import models.Student;
 import models.StudentAdvertisement;
 import models.TutorAdvertisement;
@@ -111,8 +112,36 @@ public class Application extends Controller {
             );
         }
         }
+  	
+  	@Security.Authenticated(Secured.class)
+	    public static Result addNewMessageForm(Long id) {  
+		Form<MessageForm> adForm = Form.form(MessageForm.class).bindFromRequest();
+	    if (adForm.hasErrors()) {
+	        return badRequest(postNewMessage.render(adForm, id));
+	    } else {
+	    	
+	    	
+            
+            Message m = new Message(adForm.field("text").value().toString(), Student.find.byId(request().username()));
+      		Conversation c = Conversation.find.byId(id.toString());    		
+      		c.messages.add(m);
+      		c.save();
+	    	
+	    	
+	    	
+	    	
+        return redirect(
+            routes.Application.viewMyConversation(id)
+        );
+    }
+    }
 
-        
+  	@Security.Authenticated(Secured.class)
+    public static Result addNewMessage(Long id) {
+    	return ok(
+                postNewMessage.render(form(MessageForm.class), id)
+            );
+    }
     
    
   	@Security.Authenticated(Secured.class)
@@ -237,5 +266,29 @@ public class Application extends Controller {
         }
 
     }
+    
+    
+    public static class MessageForm {
+
+        public String text;
+        
+        public String validate() {     
+        	
+        	
+            if (text.length()==0) {
+              return "Please fill in all required forms";
+            }
+            
+            if(request().username() == null){
+            	return "username is null, make sure you are logged in";
+            }
+
+            
+            return null;
+            
+        }
+
+    }
+    
 
 }

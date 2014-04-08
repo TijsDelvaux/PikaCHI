@@ -25,6 +25,9 @@ POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
 GET		/newTutAdv						controllers.Application.addNewTutAdvertisement()
 POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm()
 
+GET		/newMessage						controllers.Application.addNewMessage(id:Long)
+POST	/newMessage						controllers.Application.addNewMessageForm(id:Long)
+
 #GET     /messages            controllers.Application.viewMyMessages()
 GET		/conversations		 controllers.Application.viewMyConversations()
 GET		/conversation		 controllers.Application.viewMyConversation(id:Long)

@@ -12,14 +12,17 @@
             Logged in as @student.name
         </hgroup>
     </header>
-	<h2> Conversation</h2>
     <article  class="conversations">
     	@for(index <- 0 until conversation.messages.size){
-    		<h2> Conversation @index </h2>
+    		<h2> Message @index </h2>
+   			 Sender: @conversation.messages(index).getSender().getName()</br>
    			 Date: @conversation.messages(index).getDate()</br>
    			 Text: @conversation.messages(index).getText()</br>
 			 
    		}
+   		</br>
+   		<a href="@routes.Application.addNewMessage(conversation.id)">Post new message</a>
+   		
     </article>
 
 

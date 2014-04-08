@@ -17,10 +17,13 @@ public class Message extends Model{
     public long id;
     public String text;
     public Date date;
+    @ManyToOne
+    public Student sender;
     
-	public Message(String text){
+	public Message(String text, Student sender){
 		this.text = text;
 		this.date = new Date();
+		this.sender = sender;
 	}
 
 	public String getText() {
@@ -33,6 +36,10 @@ public class Message extends Model{
 
 	public Date getDate() {
 		return date;
+	}
+	
+	public Student getSender(){
+		return sender;
 	}
 
 	

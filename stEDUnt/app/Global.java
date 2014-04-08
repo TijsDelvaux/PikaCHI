@@ -21,13 +21,13 @@ public class Global extends GlobalSettings {
 	    	t.save();
 	    	
 	    	
-	    	Conversation c = new Conversation(serge, ine, new Message("Hey hey"));
+	    	Conversation c = new Conversation(serge, ine, new Message("Hey hey", serge));
 	    	c.save();
 	    	
 	    	Student tijs = new Student("tijs@gmail.com", "Tijs",	"pass");
 	    	tijs.save();
 	    	
-	    	c = new Conversation(serge, tijs, new Message("Hey tijs"));
+	    	c = new Conversation(serge, tijs, new Message("Hey tijs", serge));
 	    	c.save();
 	    	
 	    	
