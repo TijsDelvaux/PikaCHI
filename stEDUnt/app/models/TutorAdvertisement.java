@@ -26,14 +26,27 @@ public class TutorAdvertisement extends Advertisement{
 		return price;
 	}
 	
+	public void setPrice(double price){
+		this.price = price;
+	}
+	
 	
 	//static methods
 	
 	public static TutorAdvertisement create(Student student, String studies, String description, double price) {
 		
-		TutorAdvertisement ad = new TutorAdvertisement(student, studies, description, price);
+		TutorAdvertisement ad = TutorAdvertisement.findFromUser(student.email);
+		if(ad==null){		
+			ad = new TutorAdvertisement(student, studies, description, price);
+		}
+		else{
+			ad.setDescription(description);
+			ad.setStudies(studies);
+			ad.setPrice(price);
+		}
 		ad.save();
         return ad;
+        
     }
 	
     public static Model.Finder<Long,TutorAdvertisement> find = new Model.Finder(Long.class, TutorAdvertisement.class);

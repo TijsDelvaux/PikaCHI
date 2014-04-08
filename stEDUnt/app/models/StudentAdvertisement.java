@@ -22,6 +22,8 @@ public class StudentAdvertisement extends Advertisement {
 	
 	public static StudentAdvertisement create(Student student, String studies, String description) {
 		
+		
+		
 		StudentAdvertisement ad = new StudentAdvertisement(student, studies, description);
 		ad.save();
         return ad;
