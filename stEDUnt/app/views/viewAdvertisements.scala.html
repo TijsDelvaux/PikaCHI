@@ -18,7 +18,13 @@
     		<h2> Advertisement @index </h2>
    			 Student: @studAdvertisements(index).getStudent().getName()</br>
    			 Studies: @studAdvertisements(index).getStudies()</br>
-   			 Description: @studAdvertisements(index).getDescription() 
+   			 Description: @studAdvertisements(index).getDescription() </br>
+   			 
+   			 @if(studAdvertisements(index).getStudent()==student){
+   			 	</br>
+   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId())">Verwijder deze advertentie</a>
+   			 }
+   			 
    		}
     </article>
     
@@ -29,7 +35,12 @@
    			 Student: @tutAdvertisements(index).getStudent().getName()</br>
    			 Studies: @tutAdvertisements(index).getStudies()</br>
    			 Description: @tutAdvertisements(index).getDescription() </br>
-   			 Price: @tutAdvertisements(index).getPrice() 
+   			 Price: @tutAdvertisements(index).getPrice()  </br>
+   			 
+   			 @if(tutAdvertisements(index).getStudent()==student){
+   			 	</br>
+   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId())">Verwijder deze advertentie</a>
+   			 }
    		}
     </article>
 

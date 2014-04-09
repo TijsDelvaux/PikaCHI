@@ -65,6 +65,9 @@ public class Advertisement extends Model {
 		this.description = description;
 	}
 	
+	public Long getId() {
+		return id;
+	}
 	
 	
 }

@@ -192,6 +192,46 @@ public class Application extends Controller {
             );
   		}
     }
+  	
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result deleteTutAdvertisement(Long id) {
+  		Student s = Student.find.byId(request().username());
+  		TutorAdvertisement ta = TutorAdvertisement.find.byId(id);
+  		
+  		if(ta.student.email.equals(s.email)){
+  			ta.delete();
+  		}
+  		
+  		return ok(
+	            viewAdvertisements.render(
+	            		Student.find.byId(request().username()), 
+	            		StudentAdvertisement.find.all(),
+	            		TutorAdvertisement.find.all()
+	            		)
+	        );
+  		
+  	}
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result deleteStudAdvertisement(Long id) {
+  		Student s = Student.find.byId(request().username());
+  		StudentAdvertisement sa = StudentAdvertisement.find.byId(id);
+
+  		
+  		if(sa.student.email.equals(s.email)){
+  			sa.delete();
+  		}
+  		
+  		return ok(
+	            viewAdvertisements.render(
+	            		Student.find.byId(request().username()), 
+	            		StudentAdvertisement.find.all(),
+	            		TutorAdvertisement.find.all()
+	            		)
+	        );
+  		
+  	}
     
             
             

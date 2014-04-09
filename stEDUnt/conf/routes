@@ -34,6 +34,9 @@ GET		/myAdvertisements					controllers.Application.viewMyAdvertisements()
 #GET     /messages            controllers.Application.viewMyMessages()
 GET		/conversations		 controllers.Application.viewMyConversations()
 GET		/conversation		 controllers.Application.viewMyConversation(id:Long)
+
+GET		/deleteStAdv 		 controllers.Application.deleteStudAdvertisement(id:Long)
+GET		/deleteTutAdv 		 controllers.Application.deleteTutAdvertisement(id:Long)
 															
 # start page         
 GET     /start                 controllers.Application.start()
