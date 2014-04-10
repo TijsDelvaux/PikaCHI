@@ -15,12 +15,13 @@
 	<h2> Conversations</h2>
     <article  class="conversations">
     	@for(index <- 0 until conversations.size){
+    		<article  class="conversation">
     		<h2> Conversation @index </h2>
    			 Student1: @conversations(index).getParticipants.get(0).getName()</br>
    			 Student2: @conversations(index).getParticipants.get(1).getName()</br>
    			 
    			  <a href="@routes.Application.viewMyConversation(conversations(index).id)">Read conversation</a>
-   			  
+   			  </article>
    		}
     </article>
 
