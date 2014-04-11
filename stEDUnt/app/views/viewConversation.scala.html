@@ -6,12 +6,18 @@
 <html>
     <body>
     
-     <header>
-        <hgroup>
-            <h1>Conversation</h1>
-            Logged in as @student.name
-        </hgroup>
+    <header>
+			<div class="box">
+				<div class="left">
+					Conversations
+				</div>
+				<div class="right">
+					Logged in as @student.name
+					<a class="log" href="@routes.Application.logout()">Logout</a>
+				</div>
+			</div
     </header>
+    
     <article  class="conversations">
     	@for(index <- 0 until conversation.messages.size){
     		<h2> Message @index </h2>
