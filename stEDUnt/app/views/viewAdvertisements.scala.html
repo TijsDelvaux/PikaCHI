@@ -4,6 +4,17 @@
 @main("Start") {
     
 <html>
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<!-- http://jqueryui.com/tabs/ 
+			 voor verandering: http://keith-wood.name/uiTabs.html
+		-->
+	</head>
+	
     <body>
     
      <header>
@@ -12,39 +23,54 @@
             Logged in as @student.name
         </hgroup>
     </header>
-	<h2> Student Advertisement</h2>
-    <article  class="advertisements">
-    	@for(index <- 0 until studAdvertisements.size){
-    		<article class="advertisement">
-    		<h2> Advertisement @index </h2>
-   			 Student: @studAdvertisements(index).getStudent().getName()</br>
-   			 Studies: @studAdvertisements(index).getStudies()</br>
-   			 Description: @studAdvertisements(index).getDescription() </br>
-   			 
-   			 @if(studAdvertisements(index).getStudent()==student){
-   			 	</br>
-   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId())">Verwijder deze advertentie</a>
-   			 }
-   			 </article>
-   			 
-   		}
-    </article>
     
-    <h2> Tutor Advertisement</h2>
-    <article  class="advertisements">
-    	@for(index <- 0 until tutAdvertisements.size){
-    		<h2> Advertisement @index </h2>
-   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
-   			 Studies: @tutAdvertisements(index).getStudies()</br>
-   			 Description: @tutAdvertisements(index).getDescription() </br>
-   			 Price: @tutAdvertisements(index).getPrice()  </br>
-   			 
-   			 @if(tutAdvertisements(index).getStudent()==student){
-   			 	</br>
-   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId())">Verwijder deze advertentie</a>
-   			 }
-   		}
-    </article>
+    <div id="tabs">
+		<ul>
+			<li><a class="tab" href="#student"><span>Student Advertisement</span></a></li>
+			<li><a class="tab" href="#tutor"><span>Tutor Advertisement</span></a></li>
+		</ul>
+		<div id="student">
+				<article  class="advertisements">
+		    	@for(index <- 0 until studAdvertisements.size){
+		    		<article class="advertisement">
+		    		<h2> Advertisement @index </h2>
+		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
+		   			 Studies: @studAdvertisements(index).getStudies()</br>
+		   			 Description: @studAdvertisements(index).getDescription() </br>
+		   			 
+		   			 @if(studAdvertisements(index).getStudent()==student){
+		   			 	</br>
+		   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId())">Verwijder deze advertentie</a>
+		   			 }
+		   			 </article>
+			   			 
+			   		}
+			    </article>
+		</div>
+		
+		<div id="tutor">
+				<article  class="advertisements">
+		    	@for(index <- 0 until tutAdvertisements.size){
+		    		<article class="advertisement">
+		    		<h2> Advertisement @index </h2>
+		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
+		   			 Studies: @tutAdvertisements(index).getStudies()</br>
+		   			 Description: @tutAdvertisements(index).getDescription() </br>
+		   			 Price: @tutAdvertisements(index).getPrice()  </br>
+		   			 
+		   			 @if(tutAdvertisements(index).getStudent()==student){
+		   			 	</br>
+		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId())">Verwijder deze advertentie</a>
+		   			 }
+		   			  </article>
+		   		}
+		    	</article>
+		</div>
+	</div>
+
+	<script>
+		$( "#tabs" ).tabs();
+	</script>
 
     </body>
 </html>

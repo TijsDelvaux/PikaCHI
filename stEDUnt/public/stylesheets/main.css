@@ -1,4 +1,15 @@
-a.log:link {
+header{
+	display:block;
+	background-color:#98bf21;
+	vertical-align:top;
+	text-align:left;
+}
+h1{
+	font-size: small;
+	text-decoration: underline;
+}
+
+a.log:link,a.log:visited {
 	display:block;
 	font-weight:normal;
 	color:#FF0000;
@@ -7,14 +18,32 @@ a.log:link {
 	vertical-align:top;
 	text-align:center;
 	padding:0px;
+	margin-right: 4px;
 	text-decoration:none;
 }
 
-a.log:hover {
+a.log:hover,a.log:active {
 	color:#FF0000;
 }
 
-a:link {
+a.tab:link,a.tab:visited {
+	display:block;
+	font-weight:normal;
+	color:#FF0000;
+	background-color:#98bf21;
+	width:auto;
+	vertical-align:top;
+	text-align:center;
+	padding:0px;
+	margin-right: 4px;
+	text-decoration:none;
+}
+
+a.tab:hover,a.tab:active {
+	color:#FF0000;
+}
+
+a:link,a:visited {
 	display:block;
 	font-weight:bold;
 	color:#FFFFFF;
@@ -22,12 +51,22 @@ a:link {
 	width:120px;
 	text-align:center;
 	padding:4px;
+	margin-left: auto;
+    margin-right: auto;
 	text-decoration:none;
 }    /* unvisited link */
 	
-a:hover {
+a:hover,a:active {
 	background-color:#7A991A;
+	margin-left: auto;
+    margin-right: auto;
 }   /* mouse over link */
+
+article{
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+}
 
 article.advertisement{
 	background-color:#E2F0FF;
