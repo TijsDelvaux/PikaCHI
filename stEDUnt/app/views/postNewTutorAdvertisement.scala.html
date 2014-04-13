@@ -1,5 +1,6 @@
 @(tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement)
 
+@main("Start"){
 
 <html>
     <head>
@@ -7,17 +8,20 @@
     </head>
     <body>
 
-     <header>
-            <span>New TutorAdvertisement</span>
-        </header>
+	<header>
+		<span>New tutor advertisement</span>
+	</header>
         
+        <div class="box">
+	    <div class="background center">
+	    	
         @if(tutorAdv != null) {
-        	You have already posted your tutoring advertisement, please edit:
+        	<h1>Tutor advertisement</h1>
+        	You already have a tutoring advertisement, you can edit it here:
         	
         	
         	 @helper.form(routes.Application.addNewTutAdvertisementForm) {
-					   <h1>New TutorAdvertisement</h1>
-					
+					<div class="input button">
 					   <p>
 					       <input type="studies" name="studies" placeholder="studies" value="@tutorAdv.getStudies()">
 					   </p>
@@ -43,47 +47,45 @@
 						        @flash.get("success")
 						    </p>
 						}
-        	
+        			</div>
         	}
         	
         	
         }else{
-        
-    @helper.form(routes.Application.addNewTutAdvertisementForm) {
-   <h1>New TutorAdvertisement</h1>
+        	<h1>New tutor advertisement</h1>
+			@helper.form(routes.Application.addNewTutAdvertisementForm) {
+				<div class="input button">
+				<p>
+					<input type="studies" name="studies" placeholder="studies" value="@tuForm("studies").value">
+			    </p>
+				<p>
+					<input type="description" name="description" placeholder="description" value="@tuForm("description").value">
+				</p>
+				<p>
+					<input type="price" name="price" placeholder="price" value="@tuForm("price").value">
+				</p>
+				<p>
+					<button type="submit">Submit</button>
+				</p>
+   				</div>
+			    @if(tuForm.hasGlobalErrors) {
+				    <p class="error">
+				        @tuForm.globalError.message
+				    </p>
+				}
+			
+				@if(flash.contains("success")) {
+				    <p class="success">
+				        @flash.get("success")
+				    </p>
+				}
+			
+			}
+		}
 
-   <p>
-       <input type="studies" name="studies" placeholder="studies" value="@tuForm("studies").value">
-   </p>
-   <p>
-       <input type="description" name="description" placeholder="description" value="@tuForm("description").value">
-   </p>
-   <p>
-       <input type="price" name="price" placeholder="price" value="@tuForm("price").value">
-   </p>
-   <p>
-       <button type="submit">Submit</button>
-   </p>
-   
-   
-   @if(tuForm.hasGlobalErrors) {
-    <p class="error">
-        @tuForm.globalError.message
-    </p>
-	}
-
-	@if(flash.contains("success")) {
-	    <p class="success">
-	        @flash.get("success")
-	    </p>
-	}
-	
-	}
-
-
-}
-
-
-    
+		</div>
+    	</div>
     </body>
 </html>
+
+}

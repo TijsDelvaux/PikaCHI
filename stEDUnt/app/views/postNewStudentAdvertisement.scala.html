@@ -1,43 +1,50 @@
 @(stForm: play.data.Form[Application.StudentAdvertisementForm])
 
+@main("Start"){
 
 <html>
     <head>
+    	<div class="box">
         <title>New StudentAdvertisement</title>
+        </div>
     </head>
     <body>
         <header>
-            <span>New StudentAdvertisement</span>
+            <span>New student advertisement</span>
         </header>
         
     @helper.form(routes.Application.addNewStudAdvertisementForm) {
-   <h1>New StudentAdvertisement</h1>
-
-   <p>
-       <input type="studies" name="studies" placeholder="studies" value="@stForm("studies").value">
-   </p>
-   <p>
-       <input type="description" name="description" placeholder="description" value="@stForm("description").value">
-   </p>
-   <p>
-       <button type="submit">Submit</button>
-   </p>
-   
-   
-   @if(stForm.hasGlobalErrors) {
-    <p class="error">
-        @stForm.globalError.message
-    </p>
-	}
-
-	@if(flash.contains("success")) {
-	    <p class="success">
-	        @flash.get("success")
-	    </p>
-	}
+    <div class="box">
+	    <div class="background center">
+		    <h1>New student advertisement</h1>
+			<div class="input button">
+		    	<p>
+					<input type="studies" name="studies" placeholder="studies" value="@stForm("studies").value">
+				</p>
+				<p>
+					<input type="description" name="description" placeholder="description" value="@stForm("description").value">
+				</p>
+				<p>
+					<button type="submit">Submit</button>
+				</p>
+			</div>
+		   
+			@if(stForm.hasGlobalErrors) {
+			<p class="error">
+				@stForm.globalError.message
+			</p>
+			}
+		
+			@if(flash.contains("success")) {
+				<p class="success">
+					@flash.get("success")
+				</p>
+			}
+		</div>
+	</div>
 
 
 }
-    
     </body>
 </html>
+}
