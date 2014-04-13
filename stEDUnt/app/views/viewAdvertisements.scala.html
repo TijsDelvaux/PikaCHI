@@ -42,6 +42,7 @@
 		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @studAdvertisements(index).getStudies()</br>
 		   			 Description: @studAdvertisements(index).getDescription() </br>
+		   			 <a href="@routes.Application.createNewConversation(studAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
 		   			 
 		   			 @if(studAdvertisements(index).getStudent()==student){
 		   			 	</br>
@@ -61,8 +62,8 @@
 		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @tutAdvertisements(index).getStudies()</br>
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
-		   			 Price: @tutAdvertisements(index).getPrice()  </br>
-		   			 
+		   			 Price: €@tutAdvertisements(index).getPrice()/hour  </br>
+		   			 <a href="@routes.Application.createNewConversation(tutAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
 		   			 @if(tutAdvertisements(index).getStudent()==student){
 		   			 	</br>
 		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId())">Verwijder deze advertentie</a>

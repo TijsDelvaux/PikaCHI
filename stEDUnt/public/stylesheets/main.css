@@ -17,6 +17,14 @@ header{
 	float: right;
 }
 
+.box .center{
+    text-align: center;
+}
+
+.background {
+    background-color:#E2F0FF;
+}
+
 a.log:link,a.log:visited {
 	display:block;
 	font-weight:normal;
@@ -24,7 +32,7 @@ a.log:link,a.log:visited {
 	background-color:#98bf21;
 	width:70px;
 	vertical-align:top;
-	text-align:right;
+	text-align:center;
 	padding:0px;
 	margin-right: 4px;
 	text-decoration:none;
@@ -32,6 +40,8 @@ a.log:link,a.log:visited {
 
 a.log:hover,a.log:active {
 	color:#FF0000;
+    font-weight:bold;
+    text-align: center;
 }
 
 a.tab:link,a.tab:visited {
@@ -54,18 +64,32 @@ a.tab:hover,a.tab:active {
 a:link,a:visited {
 	display:block;
 	font-weight:bold;
-	color:#FFFFFF;
-	background-color:#98bf21;
+	color:#000000;
+	/* background-color:#98bf21; */
+    
+    background: rgb(180,227,145); /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  rgba(180,227,145,1) 0%, rgba(152,191,33,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(180,227,145,1)), color-stop(100%,rgba(152,191,33,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg,  rgba(180,227,145,1) 0%,rgba(152,191,33,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg,  rgba(180,227,145,1) 0%,rgba(152,191,33,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg,  rgba(180,227,145,1) 0%,rgba(152,191,33,1) 100%); /* IE10+ */
+    background: linear-gradient(135deg,  rgba(180,227,145,1) 0%,rgba(152,191,33,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#98bf21',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+    
+    
 	width:120px;
 	text-align:center;
 	padding:4px;
 	margin-left: auto;
     margin-right: auto;
 	text-decoration:none;
+    border-radius:5px;
 }    /* unvisited link */
 	
 a:hover,a:active {
-	background-color:#7A991A;
+	background:#7A991A;
 	margin-left: auto;
     margin-right: auto;
 }   /* mouse over link */
@@ -83,3 +107,4 @@ article.advertisement{
 article.conversation{
 	background-color:#E2F0FF;
 }
+

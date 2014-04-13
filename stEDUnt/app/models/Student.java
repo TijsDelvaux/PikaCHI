@@ -50,6 +50,9 @@ public class Student extends Model{
 		this.name = name;
 	}
 	
+	public String getEmail(){
+		return email;
+	}
 
 
 	

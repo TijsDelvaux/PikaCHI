@@ -11,6 +11,7 @@ import play.mvc.*;
 import play.data.*; 
 import static play.data.Form.*;
 import views.html.*;
+import java.util.ArrayList;
 
 public class Application extends Controller {
 
@@ -192,6 +193,17 @@ public class Application extends Controller {
             );
   		}
     }
+  	
+  	@Security.Authenticated(Secured.class)
+  	public static Result createNewConversation(String receive) {
+  		//Make a conversation
+  		Student sender = Student.find.byId(request().username());
+  		Student receiver = Student.find.byId(receive);
+  		Conversation c = new Conversation(sender, sender, new Message("Test", sender));
+  		//Show all the conversations
+  		//Better: immediately go to the new conversation TODO!!
+  		return viewMyConversations();
+  	}
   	
   	
   	@Security.Authenticated(Secured.class)
