@@ -5,7 +5,7 @@
     
 <html>
     <body>
-    
+    <!-- 
     <header>
 			<div class="box">
 				<div class="left">
@@ -17,14 +17,15 @@
 				</div>
 			</div
     </header>
-    
+    -->
     <article  class="conversations">
     	@for(index <- 0 until conversation.messages.size){
-    		<h2> Message @index </h2>
+    		
+    		<div class="bubble">    		
    			 Sender: @conversation.messages(index).getSender().getName()</br>
    			 Date: @conversation.messages(index).getDate()</br>
    			 Text: @conversation.messages(index).getText()</br>
-			 
+			 </div>
    		}
    		</br>
    		<a href="@routes.Application.addNewMessage(conversation.id)">Post new message</a>

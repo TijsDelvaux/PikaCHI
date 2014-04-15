@@ -4,6 +4,8 @@
 @main("Start") {
     
 <html>
+
+<!--
 	<header>
 			<div class="box">
 				<div class="left">
@@ -15,15 +17,12 @@
 				</div>
 			</div>
 	</header>
-	
+-->
+			<h1>stEDUnt</h1>
+		
     <body>
     	<div class=background>
-                
-                @student.name
-                @student.email
-                @student.password
-                </br>
-                <a href="@routes.Application.viewMyAdvertisements()">Mijn bijles advertenties</a></br>
+                <a href="@routes.Application.viewMyAdvertisements()" class="button">Mijn bijles advertenties</a></br>
                 <a href="@routes.Application.viewMyConversations()">Berichten</a></br>
                 <a href="@routes.Application.viewAllAdvertisements()">Bekijk advertenties</a></br>
     	</div>            
