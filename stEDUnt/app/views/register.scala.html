@@ -1,8 +1,10 @@
 @(form: play.data.Form[Application.Register])
 
+@main("Start"){
+
 
 <html>
-    <head>
+	<head>
         <title>Register</title>
     </head>
     <body>
@@ -11,35 +13,43 @@
         </header>
         
     @helper.form(routes.Application.registerNewUser) {
-   <h1>Register</h1>
-
-   <p>
-       <input type="name" name="name" placeholder="Name" value="@form("name").value">
-   </p>
-   <p>
-       <input type="email" name="email" placeholder="Email" value="@form("email").value">
-   </p>
-   <p>
-       <input type="password" name="password" placeholder="Password">
-   </p>
-   <p>
-       <button type="submit">Register</button>
-   </p>
+    	<div class="box">
+	    <div class="background center">
+			<h1>Register</h1>
+	
+			<p>
+				<input type="name" name="name" placeholder="Name" value="@form("name").value">
+			</p>
+			<p>
+				<input type="email" name="email" placeholder="Email" value="@form("email").value">
+			</p>
+			<p>
+				<input type="password" name="password" placeholder="Password">
+			</p>
+			<div class="button">
+			   	<p>
+					<button type="submit">Register</button>
+				</p>
+			</div>
+			
    
-   @if(form.hasGlobalErrors) {
-    <p class="error">
-        @form.globalError.message
-    </p>
-	}
-
-	@if(flash.contains("success")) {
-	    <p class="success">
-	        @flash.get("success")
-	    </p>
-	}
-
+			@if(form.hasGlobalErrors) {
+		    <p class="error">
+		        @form.globalError.message
+		    </p>
+			}
+		
+			@if(flash.contains("success")) {
+			    <p class="success">
+			        @flash.get("success")
+			    </p>
+			}
+		</div>
+		</div>
 
 }
     
     </body>
 </html>
+
+}

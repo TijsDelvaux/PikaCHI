@@ -1,5 +1,6 @@
 @(form: play.data.Form[Application.Login])
 
+@main("Start"){
 
 <html>
     <head>
@@ -11,32 +12,40 @@
         </header>
         
     @helper.form(routes.Application.authenticate) {
-   <h1>Sign in</h1>
-
-   <p>
-       <input type="email" name="email" placeholder="Email" value="@form("email").value">
-   </p>
-   <p>
-       <input type="password" name="password" placeholder="Password">
-   </p>
-   <p>
-       <button type="submit">Login</button>
-   </p>
+    	<div class="box">
+	    <div class="background center">  
+   			<h1>Sign in</h1>
+			<p>
+				<input type="email" name="email" placeholder="Email" value="@form("email").value">
+			</p>
+			<p>
+				<input type="password" name="password" placeholder="Password">
+			</p>
+			
+			<form>
+				<input type="button" value="Register" onclick="window.location.href='@routes.Application.register()'">
+			</form>
+			<button type="submit">Login</button>
+			
    
-   @if(form.hasGlobalErrors) {
-    <p class="error">
-        @form.globalError.message
-    </p>
-	}
-
-	@if(flash.contains("success")) {
-	    <p class="success">
-	        @flash.get("success")
-	    </p>
-	}
+			@if(form.hasGlobalErrors) {
+		    <p class="error">
+		        @form.globalError.message
+		    </p>
+			}
+		
+			@if(flash.contains("success")) {
+			    <p class="success">
+			        @flash.get("success")
+			    </p>
+			}
+		</div>
+		</div>
 
 
 }
     
     </body>
 </html>
+
+}
