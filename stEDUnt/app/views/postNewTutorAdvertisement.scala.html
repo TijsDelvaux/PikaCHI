@@ -12,12 +12,12 @@
 		<span>New tutor advertisement</span>
 	</header>
  -->
-         
+        <a class="log" href="@routes.Application.logout()">Logout</a></font> 
         <div class="box">
 	    <div class="background center">  	
         @if(tutorAdv != null) {
-        	<h1>Tutor advertisement</h1>
-        	You already have a tutoring advertisement, you can edit it here:
+        	<div class="titlefont">Tutor advertisement</div>
+        	<font color="white">You already have a tutoring advertisement, you can edit it here:</font>
         	
         	
         	 @helper.form(routes.Application.addNewTutAdvertisementForm) {

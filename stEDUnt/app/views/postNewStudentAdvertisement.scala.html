@@ -18,8 +18,9 @@
         
     @helper.form(routes.Application.addNewStudAdvertisementForm) {
     <div class="box">
+    <a class="log" href="@routes.Application.logout()">Logout</a></font>
 	    <div class="background center">
-		    <h1>New student advertisement</h1>
+		    <div class="titlefont">New student advertisement</div>
 			<div class="input button">
 		    	<p>
 					<input type="studies" name="studies" placeholder="studies" value="@stForm("studies").value">
