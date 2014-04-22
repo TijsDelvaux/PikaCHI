@@ -28,40 +28,56 @@
 		</ul>
 		<div id="student">
 				<article  class="advertisements">
+				
+				@if(!Application.hasStudAdv(student.getEmail())){
+					U heeft nog geen studentenadvertentie geplaatst. Klik hier om er nu 1 te plaatsen! 
+					
+				} else{				
+				
 		    	@for(index <- 0 until studAdvertisements.size){
+		    		@if(studAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
 		    		<h2> Advertisement @index </h2>
 		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @studAdvertisements(index).getStudies()</br>
 		   			 Description: @studAdvertisements(index).getDescription() </br>
-		   			 <a href="@routes.Application.createNewConversation(studAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
-		   			 
-		   			 @if(studAdvertisements(index).getStudent()==student){
-		   			 	</br>
-		   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),1)">Verwijder deze advertentie</a>
+		   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),2)">Verwijder deze advertentie</a>
 		   			 }
 		   			 </article>
 			   			 
 			   		}
+			   		}
+			   		</br>
+			   		<a href="@routes.Application.addNewStudAdvertisement">Plaats advertentie</a>
+			   		
 			    </article>
 		</div>
 		
 		<div id="tutor">
 				<article  class="advertisements">
+				
+				@if(!Application.hasTutAdv(student.getEmail())){
+					U heeft nog geen bijlesgeversadvertentie geplaatst. Klik hier om er nu 1 te plaatsen! 
+					<a href="@routes.Application.addNewTutAdvertisement">Plaats advertentie</a>
+					
+					
+				} else{				
+				
+				
 		    	@for(index <- 0 until tutAdvertisements.size){
+		    		@if(tutAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
 		    		<h2> Advertisement @index </h2>
 		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @tutAdvertisements(index).getStudies()</br>
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
-		   			 Price: €@tutAdvertisements(index).getPrice()/hour  </br>
-		   			 <a href="@routes.Application.createNewConversation(tutAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
-		   			 @if(tutAdvertisements(index).getStudent()==student){
-		   			 	</br>
-		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),1)">Verwijder deze advertentie</a>
+		   			 Price: @tutAdvertisements(index).getPrice()/hour  </br>
+		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">Verwijder deze advertentie</a>
 		   			 }
 		   			  </article>
 		   		}
+		   		}
+		   		
 		    	</article>
 		</div>
 	</div>

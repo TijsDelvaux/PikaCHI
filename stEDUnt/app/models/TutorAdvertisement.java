@@ -3,7 +3,9 @@ package models;
 import play.db.ebean.Model;
 
 import java.util.*;
+
 import javax.persistence.*;
+
 import play.db.ebean.*;
 
 
@@ -64,6 +66,12 @@ public class TutorAdvertisement extends Advertisement{
         	return null;
         }
     }
+    
+//    public static List<TutorAdvertisement> findTutorAdvInvolving(String user) {
+//        return find.where()
+//            .eq("members.email", user)
+//            .findList();
+//    }
 	
 	
 	

@@ -11,7 +11,9 @@ import play.mvc.*;
 import play.data.*; 
 import static play.data.Form.*;
 import views.html.*;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Application extends Controller {
 
@@ -87,7 +89,50 @@ public class Application extends Controller {
     	        );
       }
   	
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result viewMyOwnAdvertisements() {  	  
+  	  return ok(
+//  	            viewOwnAdvertisements.render(
+//  	            		Student.find.byId(request().username()), 
+//  	            		StudentAdvertisement.findStudentAdvInvolving(request().username()),
+//  	            		TutorAdvertisement.findTutorAdvInvolving(request().username())
+//  	            		)
+  	            		
+  	            		    	            viewOwnAdvertisements.render(
+    	            		Student.find.byId(request().username()), 
+    	            		StudentAdvertisement.find.all(),
+    	            		TutorAdvertisement.find.all()
+    	            		)
+  	        );
+    }
 
+    @Security.Authenticated(Secured.class)
+    public static Result viewMyAdvertisements() {
+	     return ok(
+	                myAdvertisements.render(Student.find.byId(request().username()))
+	            );
+    }
+    
+    public static Boolean hasStudAdv(String email) {
+    	List<StudentAdvertisement> sal = StudentAdvertisement.find.all();
+    	for(StudentAdvertisement sa: sal){
+    		if(sa.student.email.equals(email)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public static Boolean hasTutAdv(String email) {
+    	List<TutorAdvertisement> sal = TutorAdvertisement.find.all();
+    	for(TutorAdvertisement sa: sal){
+    		if(sa.student.email.equals(email)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
   	
   	@Security.Authenticated(Secured.class)
     public static Result addNewStudAdvertisementForm() {  
@@ -159,13 +204,6 @@ public class Application extends Controller {
             );
     }
     
-  	@Security.Authenticated(Secured.class)
-    public static Result viewMyAdvertisements() {
-
-    	return ok(
-                myAdvertisements.render(Student.find.byId(request().username()))
-            );
-    }
     
     
     
@@ -206,15 +244,22 @@ public class Application extends Controller {
   	}
   	
   	
+  	//src: 1 = viewAdvertisements
+  	//src: 2 = viewMyOwnAdvertisements
   	@Security.Authenticated(Secured.class)
-    public static Result deleteTutAdvertisement(Long id) {
+    public static Result deleteTutAdvertisement(Long id, Long src) {
   		Student s = Student.find.byId(request().username());
   		TutorAdvertisement ta = TutorAdvertisement.find.byId(id);
   		
+  		try{
   		if(ta.student.email.equals(s.email)){
   			ta.delete();
   		}
-  		
+  		}
+  		catch(NullPointerException e){
+  			
+  		}
+  		if(src==1){
   		return ok(
 	            viewAdvertisements.render(
 	            		Student.find.byId(request().username()), 
@@ -222,19 +267,34 @@ public class Application extends Controller {
 	            		TutorAdvertisement.find.all()
 	            		)
 	        );
+  		}
+  		
+  		else{
+  		return ok(
+  				viewOwnAdvertisements.render(
+	            		Student.find.byId(request().username()), 
+	            		StudentAdvertisement.find.all(),
+	            		TutorAdvertisement.find.all()
+	            		)
+	        );
+  		}
   		
   	}
   	
   	@Security.Authenticated(Secured.class)
-    public static Result deleteStudAdvertisement(Long id) {
+    public static Result deleteStudAdvertisement(Long id, Long src) {
   		Student s = Student.find.byId(request().username());
   		StudentAdvertisement sa = StudentAdvertisement.find.byId(id);
 
-  		
+  		try{  		
   		if(sa.student.email.equals(s.email)){
   			sa.delete();
   		}
-  		
+  		}
+  		catch(NullPointerException e){
+  			
+  		}
+  		if(src==1){
   		return ok(
 	            viewAdvertisements.render(
 	            		Student.find.byId(request().username()), 
@@ -242,6 +302,17 @@ public class Application extends Controller {
 	            		TutorAdvertisement.find.all()
 	            		)
 	        );
+  		}
+  		
+  		else{
+  		return ok(
+  				viewOwnAdvertisements.render(
+	            		Student.find.byId(request().username()), 
+	            		StudentAdvertisement.find.all(),
+	            		TutorAdvertisement.find.all()
+	            		)
+	        );
+  		}
   		
   	}
     

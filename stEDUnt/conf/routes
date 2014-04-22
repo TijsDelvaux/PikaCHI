@@ -19,6 +19,9 @@ POST    /register                  controllers.Application.registerNewUser()
 
 GET     /advertisements            controllers.Application.viewAllAdvertisements()
 
+GET     /myOwnAdvertisements            controllers.Application.viewMyOwnAdvertisements()
+
+
 GET		/newStAdv						controllers.Application.addNewStudAdvertisement()
 POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
 
@@ -31,12 +34,14 @@ POST	/newMessage						controllers.Application.addNewMessageForm(id:Long)
 
 GET		/myAdvertisements					controllers.Application.viewMyAdvertisements()
 
+
+
 #GET     /messages            controllers.Application.viewMyMessages()
 GET		/conversations		 controllers.Application.viewMyConversations()
 GET		/conversation		 controllers.Application.viewMyConversation(id:Long)
 
-GET		/deleteStAdv 		 controllers.Application.deleteStudAdvertisement(id:Long)
-GET		/deleteTutAdv 		 controllers.Application.deleteTutAdvertisement(id:Long)
+GET		/deleteStAdv 		 controllers.Application.deleteStudAdvertisement(id:Long, src:Long)
+GET		/deleteTutAdv 		 controllers.Application.deleteTutAdvertisement(id:Long, src:Long)
 
 GET		/conversations		 controllers.Application.createNewConversation(receiverId:String)
 															

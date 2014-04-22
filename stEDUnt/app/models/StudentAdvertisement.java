@@ -1,9 +1,9 @@
 package models;
 
-import java.util.List;
-
 import java.util.*;
+
 import javax.persistence.*;
+
 import play.db.ebean.*;
 
 
@@ -22,8 +22,6 @@ public class StudentAdvertisement extends Advertisement {
 	
 	public static StudentAdvertisement create(Student student, String studies, String description) {
 		
-		
-		
 		StudentAdvertisement ad = new StudentAdvertisement(student, studies, description);
 		ad.save();
         return ad;
@@ -31,11 +29,10 @@ public class StudentAdvertisement extends Advertisement {
 	
     public static Model.Finder<Long,StudentAdvertisement> find = new Model.Finder(Long.class, StudentAdvertisement.class);
 	
-//    public static List<StudentAdvertisement> findInvolving(String user) {
+//    public static List<StudentAdvertisement> findStudentAdvInvolving(String user) {
 //        return find.where()
 //            .eq("members.email", user)
 //            .findList();
 //    }
-//	
 	
 }
