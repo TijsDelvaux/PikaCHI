@@ -20,6 +20,7 @@
     </header>
   -->    
   	<a class="log" href="@routes.Application.logout()">Logout</a></font>
+  	<a class="log" href="@routes.Application.index()">Home</a></font>
 	<div class="box titlefont">My Conversations (@conversations.size)</div></h1>
     <article  class="conversations">
     	@for(index <- 0 until conversations.size){
@@ -31,7 +32,7 @@
    			    Student: @conversations(index).getParticipants.get(0).getName()</br>
    			}
    			 
-   			  <a href="@routes.Application.viewMyConversation(conversations(index).id)">Read conversation</a>
+   			  <a href="@routes.Application.viewMyConversation(conversations(index).id)" class="lb">Read conversation</a> </br>
    			  </article>
    		}
     </article>

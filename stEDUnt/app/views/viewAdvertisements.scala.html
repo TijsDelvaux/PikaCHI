@@ -9,40 +9,81 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/tabs.css")">
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<!-- http://jqueryui.com/tabs/ 
-			 voor verandering: http://keith-wood.name/uiTabs.html
-		-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script>
+			// Wait until the DOM has loaded before querying the document
+			$(document).ready(function(){
+				$('ul.tabs').each(function(){
+					// For each set of tabs, we want to keep track of
+					// which tab is active and it's associated content
+					var $active, $content, $links = $(this).find('a');
+
+					// If the location.hash matches one of the links, use that as the active tab.
+					// If no match is found, use the first link as the initial active tab.
+					$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+					$active.addClass('active');
+
+					$content = $($active[0].hash);
+
+					// Hide the remaining content
+					$links.not($active).each(function () {
+						$(this.hash).hide();
+					});
+
+					// Bind the click event handler
+					$(this).on('click', 'a', function(e){
+						// Make the old tab inactive.
+						$active.removeClass('active');
+						$content.hide();
+
+						// Update the variables with the new link and content
+						$active = $(this);
+						$content = $(this.hash);
+
+						// Make the tab active.
+						$active.addClass('active');
+						$content.show();
+
+						// Prevent the anchor's default click action
+						e.preventDefault();
+					});
+				});
+			});
+		</script>
 	</head>
 	
     <body>
     
     <a class="log" href="@routes.Application.logout()">Logout</a></font>	
+    	<a class="log" href="@routes.Application.index()">Home</a></font>
+    
 	<div class="titlefont">Advertisements</div><font font-align="right">
 	
-    <div id="tabs">
-		<ul>
-			<li><a class="tab" href="#student"><span>Student Advertisement</span></a></li>
-			<li><a class="tab" href="#tutor"><span>Tutor Advertisement</span></a></li>
+    <ul class='tabs'>
+			<li><a href="#student">Student Advertisements</a></li>
+			<li><a href="#tutor">Tutor Advertisements</a></li>
 		</ul>
 		<div id="student">
 				<article  class="advertisements">
 		    	@for(index <- 0 until studAdvertisements.size){
 		    		<article class="advertisement">
-		    		<h2> Advertisement @index </h2>
+		    		<h2> Advertisement @index @if(studAdvertisements(index).getStudent()==student){
+		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">
+		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
+		    				</a>
+		   			 }</h2>
 		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @studAdvertisements(index).getStudies()</br>
 		   			 Description: @studAdvertisements(index).getDescription() </br>
-		   			 <a href="@routes.Application.createNewConversation(studAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
+		   			 <a href="@routes.Application.createNewConversation(studAdvertisements(index).getStudent().getEmail())" class="lb"> Send a message </a> </br>
 		   			 
-		   			 @if(studAdvertisements(index).getStudent()==student){
-		   			 	</br>
-		   			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),1)">Verwijder deze advertentie</a>
-		   			 }
+		   			 
 		   			 </article>
 			   			 
 			   		}
+			   		</br> 
+			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">Plaats advertentie</a>
+			   		
 			    </article>
 		</div>
 		
@@ -50,25 +91,24 @@
 				<article  class="advertisements">
 		    	@for(index <- 0 until tutAdvertisements.size){
 		    		<article class="advertisement">
-		    		<h2> Advertisement @index </h2>
+		    		<h2> Advertisement @index @if(tutAdvertisements(index).getStudent()==student){
+		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),1)">
+		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
+		    				</a>
+		   			 }</h2>
 		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @tutAdvertisements(index).getStudies()</br>
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
 		   			 Price: €@tutAdvertisements(index).getPrice()/hour  </br>
-		   			 <a href="@routes.Application.createNewConversation(tutAdvertisements(index).getStudent().getEmail())"> Send a	message </a> </br>
-		   			 @if(tutAdvertisements(index).getStudent()==student){
-		   			 	</br>
-		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),1)">Verwijder deze advertentie</a>
-		   			 }
+		   			 <a href="@routes.Application.createNewConversation(tutAdvertisements(index).getStudent().getEmail())" class="lb"> Send a	message </a> </br>
+
 		   			  </article>
 		   		}
+		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">Advertentie plaatsen</a></br>
 		    	</article>
 		</div>
-	</div>
+	
 
-	<script>
-		$( "#tabs" ).tabs();
-	</script>
 
     </body>
 </html>

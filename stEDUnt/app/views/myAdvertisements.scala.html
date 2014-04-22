@@ -13,20 +13,23 @@
 				<div class="right">
 					Logged in as @student.name
 					<a class="log" href="@routes.Application.logout()">Logout</a>
+					
 				</div>
 			</div>
 	</header>
 -->
     <body>
     <a class="log" href="@routes.Application.logout()">Logout</a></font>
+    	<a class="log" href="@routes.Application.index()">Home</a></font>
+    
     <div class="titlefont">My advertisements</div>
     
 		<div class="background">
 				Advertentie posten:
-                <a href="@routes.Application.addNewStudAdvertisement()">Bijles zoeken</a></br>
-                <a href="@routes.Application.addNewTutAdvertisement()">Bijles geven</a></br>
+                <a href="@routes.Application.addNewStudAdvertisement()"  class="lb">Bijles zoeken</a></br>
+                <a href="@routes.Application.addNewTutAdvertisement()"  class="lb">Bijles geven</a></br>
                 Advertentie's bekijken of aanpassen:
-                <a href="@routes.Application.viewMyOwnAdvertisements()">Mijn advertenties</a></br>
+                <a href="@routes.Application.viewMyOwnAdvertisements()" class="lb">Mijn advertenties</a></br>
 		</div>                
 
     </body>
