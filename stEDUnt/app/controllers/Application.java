@@ -138,7 +138,7 @@ public class Application extends Controller {
     public static Result addNewStudAdvertisementForm() {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
             if (adForm.hasErrors()) {
-                return badRequest(postNewStudentAdvertisement.render(adForm));
+                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm));
             } else {
                 return redirect(
                     routes.Application.start()
@@ -151,7 +151,7 @@ public class Application extends Controller {
   	    public static Result addNewTutAdvertisementForm() {  
   		Form<TutorAdvertisementForm> adForm = Form.form(TutorAdvertisementForm.class).bindFromRequest();
         if (adForm.hasErrors()) {
-            return badRequest(postNewTutorAdvertisement.render(adForm, null));
+            return badRequest(postNewTutorAdvertisement.render(Student.find.byId(request().username()),adForm, null));
         } else {
             return redirect(
                 routes.Application.start()
@@ -193,14 +193,15 @@ public class Application extends Controller {
   	@Security.Authenticated(Secured.class)
     public static Result addNewStudAdvertisement() {
     	return ok(
-                postNewStudentAdvertisement.render(form(StudentAdvertisementForm.class))
+                postNewStudentAdvertisement.render(Student.find.byId(request().username()),
+                		form(StudentAdvertisementForm.class))
             );
     }
   	
     @Security.Authenticated(Secured.class)
     public static Result addNewTutAdvertisement() {
     	return ok(
-                postNewTutorAdvertisement.render(form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
+                postNewTutorAdvertisement.render(Student.find.byId(request().username()),form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
             );
     }
     

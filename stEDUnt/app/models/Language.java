@@ -13,6 +13,13 @@ public enum Language {
 		public String searchTutor(){return "Bijles zoeken";}
 		public String giveTutoring(){return "Bijles geven";}
 		public String changeAdvertisements(){return "Advertentie's bekijken of aanpassen: ";}
+		public String newStudentAdvertisement(){return "Nieuwe advertentie bijleszoekende";}
+		public String studies(){return "Studies";}
+		public String description(){return "Beschrijving";}
+		public String post(){return "Post";}
+		public String tutorAdvertisement(){return "Advertentie bijlesgever";}
+		public String alreadyTutorAdvertisement(){return "Je hebt al een bijlesgeversadvertentie, je kan deze hier aanpassen:";}
+		public String price(){return "Prijs";}
 	}, 
 	
 	English{
@@ -26,6 +33,13 @@ public enum Language {
 		public String searchTutor(){return null;}
 		public String giveTutoring(){return null;}
 		public String changeAdvertisements(){return null;}
+		public String newStudentAdvertisement(){return null;}
+		public String studies(){return null;}
+		public String description(){return null;}
+		public String post(){return null;}
+		public String tutorAdvertisement(){return null;}
+		public String alreadyTutorAdvertisement(){return null;}
+		public String price(){return null;}
 		
 	};
 	
@@ -38,4 +52,11 @@ public enum Language {
 	public abstract String searchTutor();
 	public abstract String giveTutoring();
 	public abstract String changeAdvertisements();
+	public abstract String newStudentAdvertisement();
+	public abstract String studies();
+	public abstract String description();
+	public abstract String post();
+	public abstract String tutorAdvertisement();
+	public abstract String alreadyTutorAdvertisement();
+	public abstract String price();
 }

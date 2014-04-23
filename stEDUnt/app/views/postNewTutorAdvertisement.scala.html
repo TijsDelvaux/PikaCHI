@@ -1,4 +1,4 @@
-@(tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement)
+@(student: Student, tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement)
 
 @main("Start"){
 
@@ -18,23 +18,23 @@
         <div class="box">
 	    <div class="background center">  	
         @if(tutorAdv != null) {
-        	<div class="titlefont">Tutor advertisement</div>
-        	<font color="white">You already have a tutoring advertisement, you can edit it here:</font>
+        	<div class="titlefont">@(student.getLanguage().tutorAdvertisement())</div>
+        	<font color="white">@(student.getLanguage().alreadyTutorAdvertisement())</font>
         	
         	
         	 @helper.form(routes.Application.addNewTutAdvertisementForm) {
 					<div class="input button">
 					   <p>
-					       <input type="studies" name="studies" placeholder="studies" value="@tutorAdv.getStudies()">
+					       <input type="studies" name="studies" placeholder="@(student.getLanguage().studies())" value="@tutorAdv.getStudies()">
 					   </p> 
 					   <p>
-					       <textarea type="description" name="description" placeholder="description" value="@tutorAdv.getDescription()"></textarea>
+					       <textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tutorAdv.getDescription()"></textarea>
 					   </p>
 					   <p>
-					       <input type="price" name="price" placeholder="price" value="@tutorAdv.getPrice()">
+					       <input type="price" name="price" placeholder=@(student.getLanguage().price()) value="@tutorAdv.getPrice()">
 					   </p>
 					   <p>
-					       <button type="submit">Submit</button>
+					       <button type="submit">@(student.getLanguage().post())</button>
 					   </p>
 					   
 					   
