@@ -1,4 +1,4 @@
-@(stForm: play.data.Form[Application.StudentAdvertisementForm])
+@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm])
 
 @main("Start"){
 
@@ -22,16 +22,16 @@
     	<a class="log" href="@routes.Application.index()">Home</a></font>
     
 	    <div class="background center">
-		    <div class="titlefont">New student advertisement</div>
+		    <div class="titlefont">@(student.getLanguage().newStudentAdvertisement())</div>
 			<div class="input button">
 		    	<p>
-					<input type="studies" name="studies" placeholder="studies" value="@stForm("studies").value">
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@stForm("studies").value">
 				</p>
 				<p>
-					<textarea  type="description" name="description" placeholder="description" value="@stForm("description").value"></textarea>
+					<textarea  type="description" name="description" placeholder=@(student.getLanguage().description()) value="@stForm("description").value"></textarea>
 				</p>
 				<p>
-					<button type="submit">Submit</button>
+					<button type="submit">@(student.getLanguage().post())</button>
 				</p>
 			</div>
 		   

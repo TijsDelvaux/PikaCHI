@@ -138,7 +138,7 @@ public class Application extends Controller {
     public static Result addNewStudAdvertisementForm() {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
             if (adForm.hasErrors()) {
-                return badRequest(postNewStudentAdvertisement.render(adForm));
+                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm));
             } else {
                 return redirect(
                     routes.Application.start()
@@ -151,7 +151,7 @@ public class Application extends Controller {
   	    public static Result addNewTutAdvertisementForm() {  
   		Form<TutorAdvertisementForm> adForm = Form.form(TutorAdvertisementForm.class).bindFromRequest();
         if (adForm.hasErrors()) {
-            return badRequest(postNewTutorAdvertisement.render(adForm, null));
+            return badRequest(postNewTutorAdvertisement.render(Student.find.byId(request().username()),adForm, null));
         } else {
             return redirect(
                 routes.Application.start()
@@ -161,21 +161,23 @@ public class Application extends Controller {
   	
   	@Security.Authenticated(Secured.class)
 	    public static Result addNewMessageForm(Long id) {  
-		Form<MessageForm> adForm = Form.form(MessageForm.class).bindFromRequest();
-	    if (adForm.hasErrors()) {
-	        return badRequest(postNewMessage.render(adForm, id));
+		Form<MessageForm> mesForm = Form.form(MessageForm.class).bindFromRequest();
+	    if (mesForm.hasErrors()) {
+	        return badRequest(postNewMessage.render(mesForm, id));
 	    } else {
 	    	
+	    	Message m = new Message(mesForm.field("text").value().toString(), Student.find.byId(request().username()));
 	    	
-            
-            Message m = new Message(adForm.field("text").value().toString(), Student.find.byId(request().username()));
-      		Conversation c = Conversation.find.byId(id.toString());    		
+	    	Conversation c = null;
+	    	
+//	    	if(id == -1){
+//	    		c = new Conversation(Student.find.byId(request().username()), participant2, m);
+//	    	}
+	    	
+      		c = Conversation.find.byId(id.toString());    		
       		c.messages.add(m);
       		c.save();
-	    	
-	    	
-	    	
-	    	
+	    		    	
         return redirect(
             routes.Application.viewMyConversation(id)
         );
@@ -193,18 +195,35 @@ public class Application extends Controller {
   	@Security.Authenticated(Secured.class)
     public static Result addNewStudAdvertisement() {
     	return ok(
-                postNewStudentAdvertisement.render(form(StudentAdvertisementForm.class))
+                postNewStudentAdvertisement.render(Student.find.byId(request().username()),
+                		form(StudentAdvertisementForm.class))
             );
     }
   	
     @Security.Authenticated(Secured.class)
     public static Result addNewTutAdvertisement() {
     	return ok(
-                postNewTutorAdvertisement.render(form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
+                postNewTutorAdvertisement.render(Student.find.byId(request().username()),form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
             );
     }
     
-    
+    public static long getConversationID(String stud1, String stud2){
+    	List<Conversation> convs = Conversation.findConversationsOfStudent(Student.find.byId(stud1));
+    	long id = -1; //default value, new conv needs to be created
+    	for(Conversation c: convs){
+    			if((c.participants.get(0).email.equals(stud1) && c.participants.get(1).email.equals(stud2)) ||
+    			   (c.participants.get(0).email.equals(stud2) && c.participants.get(1).email.equals(stud1))	){
+    				id = c.id;
+    			}
+    	}
+    	if(id == -1){
+    		Conversation c = new Conversation(Student.find.byId(stud1),Student.find.byId(stud2));
+    		c.save();
+    		id = c.id;
+    	}
+    	return id;
+    	
+    }
     
     
   	@Security.Authenticated(Secured.class)
@@ -232,19 +251,16 @@ public class Application extends Controller {
   		}
     }
   	
-  	@Security.Authenticated(Secured.class)
-  	public static Result createNewConversation(String send, String receive) {
-  		//Make a conversation
-  		Student sender = Student.find.byId(request().username());
-  		Student receiver = Student.find.byId(receive);
-  		Message m = new Message("test", sender);
-  		Conversation c = new Conversation(sender, receiver, null);
-  		c.messages.add(m);
-  		c.save();
-  		//Show all the conversations
-  		//Better: immediately go to the new conversation TODO!!
-  		return viewMyConversations();
-  	}
+//  	@Security.Authenticated(Secured.class)
+//  	public static Result createNewConversation(String receive) {
+//  		//Make a conversation
+//  		Student sender = Student.find.byId(request().username());
+//  		Student receiver = Student.find.byId(receive);
+//  		Conversation c = new Conversation(sender, sender, new Message("Test", sender));
+//  		//Show all the conversations
+//  		//Better: immediately go to the new conversation TODO!!
+//  		return viewMyConversations();
+//  	}
   	
   	
   	//src: 1 = viewAdvertisements
