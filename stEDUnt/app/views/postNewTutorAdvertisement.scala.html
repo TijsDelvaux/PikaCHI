@@ -54,20 +54,20 @@
         	
         	
         }else{
-        	<h1>New tutor advertisement</h1>
+        	<h1>@(student.getLanguage().tutorAdvertisement())</h1>
 			@helper.form(routes.Application.addNewTutAdvertisementForm) {
 				<div class="input button">
 				<p>
-					<input type="studies" name="studies" placeholder="studies" value="@tuForm("studies").value">
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@tuForm("studies").value">
 			    </p>
 				<p>
-					<textarea type="description" name="description" placeholder="description" value="@tuForm("description").value"></textarea>
+					<textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tuForm("description").value"></textarea>
 				</p>
 				<p>
-					<input type="price" name="price" placeholder="price in &#8364/hour" value="@tuForm("price").value">
+					<input type="price" name="price" placeholder= @(student.getLanguage().price()) value="@tuForm("price").value">
 				</p>
 				<p>
-					<button type="submit">Submit</button>
+					<button type="submit">@(student.getLanguage().post())</button>
 				</p>
    				</div>
 			    @if(tuForm.hasGlobalErrors) {

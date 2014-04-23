@@ -21,7 +21,7 @@ public enum Language {
 		public String post(){return "Post";}
 		public String tutorAdvertisement(){return "Advertentie bijlesgever";}
 		public String alreadyTutorAdvertisement(){return "Je hebt al een bijlesgeversadvertentie, je kan deze hier aanpassen:";}
-		public String price(){return "Prijs";}
+		public String price(){return "Prijs (&#8364/uur)";}
 		public String notYetAstudentAdvertention(){return "Je hebt nog geen bijleszoekeradvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String notYetATutorAdvertention(){return "Je hebt nog geen bijlesgeversadvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String placeAdvertisement(){return "Plaats advertentie";}
