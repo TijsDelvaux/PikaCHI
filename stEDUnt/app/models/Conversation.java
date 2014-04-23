@@ -33,6 +33,14 @@ public class Conversation extends Model{
 		messages.add(message);
 	}
 	
+	public Conversation(Student participant1, Student participant2) {
+		participants = new ArrayList<>();
+		participants.add(participant1);
+		participants.add(participant2);
+		
+		messages = new ArrayList<>();
+	}
+
 	public static Finder<String,Conversation> find = new Finder<String,Conversation>(
 	        String.class, Conversation.class
 	    ); 

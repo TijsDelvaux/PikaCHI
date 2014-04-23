@@ -75,7 +75,7 @@
 		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
 		   			 Studies: @studAdvertisements(index).getStudies()</br>
 		   			 Description: @studAdvertisements(index).getDescription() </br>
-		   			 <a href="@routes.Application.createNewConversation(studAdvertisements(index).getStudent().getEmail())" class="lb"> Send a message </a> </br>
+		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> </br>
 		   			 
 		   			 
 		   			 </article>
@@ -100,7 +100,7 @@
 		   			 Studies: @tutAdvertisements(index).getStudies()</br>
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
 		   			 Price: €@tutAdvertisements(index).getPrice()/hour  </br>
-		   			 <a href="@routes.Application.createNewConversation(tutAdvertisements(index).getStudent().getEmail())" class="lb"> Send a	message </a> </br>
+		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> </br>
 
 		   			  </article>
 		   		}
