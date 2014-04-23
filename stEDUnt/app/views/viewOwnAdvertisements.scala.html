@@ -64,30 +64,30 @@
     <a class="log" href="@routes.Application.logout()">Logout</a></font>
     	<a class="log" href="@routes.Application.index()">Home</a></font>
     	
-	<div class="titlefont">Advertisements</div><font font-align="right">
+	<div class="titlefont">@(student.getLanguage().myAdvertisements())</div><font font-align="right">
 	
 		<ul class='tabs'>
-			<li><a href="#student">Student Advertisements</a></li>
-			<li><a href="#tutor">Tutor Advertisements</a></li>
+			<li><a href="#student">@(student.getLanguage().searchTutor())</a></li>
+			<li><a href="#tutor">@(student.getLanguage().giveTutoring())</a></li>
 		</ul>
 		<div id="student">
 				<article  class="advertisements">
 				
 				@if(!Application.hasStudAdv(student.getEmail())){
-					U heeft nog geen studentenadvertentie geplaatst. Klik hier om er nu 1 te plaatsen! 
+					@(student.getLanguage().notYetAstudentAdvertention())
 					
 				} else{				
 				
 		    	@for(index <- 0 until studAdvertisements.size){
 		    		@if(studAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
-		    		<h2> Advertisement @index 
+		    		<h2> @(student.getLanguage().advertisement()) @index 
 		    				<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
-		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
-		   			 Studies: @studAdvertisements(index).getStudies()</br>
-		   			 Description: @studAdvertisements(index).getDescription() </br>
+		   			 @studAdvertisements(index).getStudent().getName()</br>
+		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
+		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
 		   			 </br>
 		   			 }
 		   			 </article>
@@ -95,7 +95,7 @@
 			   		}
 			   		}
 			   		</br> 
-			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">Plaats advertentie</a>
+			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">@(student.getLanguage().placeAdvertisement())</a>
 			   		
 			    </article>
 		</div>
@@ -104,8 +104,8 @@
 				<article  class="advertisements">
 				
 				@if(!Application.hasTutAdv(student.getEmail())){
-					U heeft nog geen bijlesgeversadvertentie geplaatst. Klik hier om er nu 1 te plaatsen! 
-					<a href="@routes.Application.addNewTutAdvertisement" class="lb">Plaats advertentie</a>
+					@(student.getLanguage().notYetATutorAdvertention())
+					<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
 					
 					
 				} else{				
@@ -114,7 +114,7 @@
 		    	@for(index <- 0 until tutAdvertisements.size){
 		    		@if(tutAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
-		    		<h2> Advertisement @index 
+		    		<h2>  @(student.getLanguage().advertisement()) @index 
 		    				<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
@@ -123,7 +123,7 @@
 		   			 Studies: @tutAdvertisements(index).getStudies()</br>
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
 		   			 Price: @tutAdvertisements(index).getPrice()/hour  </br></br>
-		   			 					<a href="@routes.Application.addNewTutAdvertisement" class="lb">Advertentie aanpassen</a></br>
+		   			 					<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().changeAdvertisements())</a></br>
 		   			 
 		   			 }
 		   			  </article>
