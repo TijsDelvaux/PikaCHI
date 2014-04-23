@@ -96,12 +96,13 @@
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
 		   			 }</h2>
-		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
-		   			 Studies: @tutAdvertisements(index).getStudies()</br>
-		   			 Description: @tutAdvertisements(index).getDescription() </br>
-				     Price: &euro;@tutAdvertisements(index).getPrice()/hour  </br>
-		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> </br>
-
+		   			 @if(tutAdvertisements(index).getStudent() != student){
+			   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
+			   			 Studies: @tutAdvertisements(index).getStudies()</br>
+			   			 Description: @tutAdvertisements(index).getDescription() </br>
+					     Price: &euro;@tutAdvertisements(index).getPrice()/hour  </br>
+			   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> </br>
+					}
 		   			  </article>
 		   		}
 		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">Advertentie plaatsen</a></br>
