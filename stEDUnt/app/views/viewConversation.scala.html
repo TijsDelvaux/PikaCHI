@@ -21,16 +21,24 @@
     <article  class="conversations">
     	@for(index <- 0 until conversation.messages.size){
     		@if(conversation.messages(index).getSender() != student){
-	    		<div class="bubble">    		
-		   			 @conversation.messages(index).getSender().getName()</br>
-		   			 @conversation.messages(index).getSimpleDate()</br>
+	    		<div class="bubble">   
+	    			<div class="bubbleHeader"> 		
+		   			 @conversation.messages(index).getSender().getName() 
+		   			 (@conversation.messages(index).getSimpleDate()):</br>
+		   			 </div>
+		   			 <div class="bubbleBody">
 		   			 @conversation.messages(index).getText()</br>
+		   			 </div>
 				 </div>
 			 }else{
-			 	<div class="bubble">    		
-		   			 @conversation.messages(index).getSender().getName()</br>
-		   			 @conversation.messages(index).getSimpleDate()</br>
+			 	<div class="bubbleMe">    	
+			 		<div class="bubbleHeader"> 		
+		   			 @conversation.messages(index).getSender().getName() 
+		   			 (@conversation.messages(index).getSimpleDate()):</br>
+		   			  </div>
+		   			  <div class="bubbleBody">
 		   			 @conversation.messages(index).getText()</br>
+		   			  </div>
 				</div>
 			 }
    		}
@@ -39,7 +47,7 @@
    		@helper.form(routes.Application.addNewMessageForm(conversation.id)) {
 					
 		   <p>
-		       <input type="text" name="text" placeholder="new message" value="@form("text").value">
+		       <input type="textarea" name="text" placeholder="new message" value="@form("text").value">
 		   </p>
 		   <p>
 		       <button type="submit">Submit</button>
