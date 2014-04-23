@@ -79,10 +79,9 @@
 		   			 Studies: @studAdvertisements(index).getStudies()</br>
 		   			 Description: @studAdvertisements(index).getDescription() </br>
 		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> 
-		   			 
-		   			 
 		   			 </article>
-			   		} </br>
+			   		} 
+			   		</br>
 			   	}
 			   	
 			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">Plaats advertentie</a>
@@ -107,8 +106,9 @@
 		   			 Description: @tutAdvertisements(index).getDescription() </br>
 				     Price: &euro;@tutAdvertisements(index).getPrice()/hour  </br>
 		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> 
-					}</br>
-		   			  </article>
+					  </article>
+					}
+					</br>
 		   		}
 		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">Advertentie plaatsen</a></br>
 		    	</article>
