@@ -246,7 +246,7 @@ public class Application extends Controller {
   		}
   		else{
   		return ok(
-                viewConversation.render(s,c)
+                viewConversation.render(s,c,form(MessageForm.class))
             );
   		}
     }

@@ -1,4 +1,4 @@
-@(student: Student, conversation: Conversation)
+@(student: Student, conversation: Conversation, form: play.data.Form[Application.MessageForm])
 
 
 @main("Start") {
@@ -35,7 +35,29 @@
 			 }
    		}
    		</br>
-   		<a href="@routes.Application.addNewMessage(conversation.id)">Post new message</a>
+   		
+   		@helper.form(routes.Application.addNewMessageForm(conversation.id)) {
+					
+		   <p>
+		       <input type="text" name="text" placeholder="new message" value="@form("text").value">
+		   </p>
+		   <p>
+		       <button type="submit">Submit</button>
+		   </p>
+		   		   
+		   @if(form.hasGlobalErrors) {
+			    <p class="error">
+			        @form.globalError.message
+			    </p>
+			}
+		
+			@if(flash.contains("success")) {
+			    <p class="success">
+			        @flash.get("success")
+			    </p>
+			}
+        	
+        }
    		
     </article>
 
