@@ -43,7 +43,6 @@ GET		/conversation		 controllers.Application.viewMyConversation(id:Long)
 GET		/deleteStAdv 		 controllers.Application.deleteStudAdvertisement(id:Long, src:Long)
 GET		/deleteTutAdv 		 controllers.Application.deleteTutAdvertisement(id:Long, src:Long)
 
-GET		/conversations		 controllers.Application.createNewConversation(receiverId:String)
 															
 # start page         
 GET     /start                 controllers.Application.start()
