@@ -21,18 +21,18 @@
   -->    
   	<a class="log" href="@routes.Application.logout()">Logout</a></font>
   	<a class="log" href="@routes.Application.index()">Home</a></font>
-	<div class="box titlefont">My Conversations (@conversations.size)</div></h1>
+	<div class="box titlefont">@(student.getLanguage().conversations()) (@conversations.size)</div></h1>
     <article  class="conversations">
     	@for(index <- 0 until conversations.size){
     		<article  class="conversation">
-    		<h2> Conversation @index </h2>
+    		@(student.getLanguage().conversationWith()) 
     		@if(conversations(index).getParticipants.get(0).getName() == student.getName()){
-   			 	Student: @conversations(index).getParticipants.get(1).getName()</br>
+   			 	@conversations(index).getParticipants.get(1).getName()</br>
    			}else{
-   			    Student: @conversations(index).getParticipants.get(0).getName()</br>
+   			    @conversations(index).getParticipants.get(0).getName()</br>
    			}
    			 
-   			  <a href="@routes.Application.viewMyConversation(conversations(index).id)" class="lb">Read conversation</a> </br>
+   			  <a href="@routes.Application.viewMyConversation(conversations(index).id)" class="lb">@(student.getLanguage().read())</a> </br>
    			  </article>
    		}
     </article>

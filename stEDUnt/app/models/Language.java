@@ -25,6 +25,13 @@ public enum Language {
 		public String notYetAstudentAdvertention(){return "Je hebt nog geen bijleszoekeradvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String notYetATutorAdvertention(){return "Je hebt nog geen bijlesgeversadvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String placeAdvertisement(){return "Plaats advertentie";}
+		public String conversations(){return "Conversaties";}
+		public String conversationWith(){return "Conversatie met";}
+		public String read(){return "Lees";}
+		public String submit(){return "Verzend";}
+		public String newMessage(){return "Nieuw bericht";}
+		
+		
 	}, 
 	
 	English{
@@ -50,6 +57,11 @@ public enum Language {
 		public String notYetAstudentAdvertention(){return null;}
 		public String notYetATutorAdvertention(){return null;}
 		public String placeAdvertisement(){return null;}
+		public String conversations(){return null;}
+		public String conversationWith(){return null;}
+		public String read(){return null;}
+		public String submit(){return null;}
+		public String newMessage(){return null;}
 		
 	};
 	
@@ -74,4 +86,9 @@ public enum Language {
 	public abstract String notYetAstudentAdvertention();
 	public abstract String notYetATutorAdvertention();
 	public abstract String placeAdvertisement();
+	public abstract String conversations();
+	public abstract String conversationWith();
+	public abstract String read();
+	public abstract String submit();
+	public abstract String newMessage();
 }
