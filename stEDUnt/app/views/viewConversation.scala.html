@@ -5,6 +5,11 @@
     
 <html>
     <body>
+     <a class="log" href="@routes.Application.logout()">Logout</a></font> 
+     <a class="log" href="@routes.Application.index()">Home</a></font>
+     </br>
+    </br>
+    
     <!-- 
     <header>
 			<div class="box">
@@ -47,10 +52,10 @@
    		@helper.form(routes.Application.addNewMessageForm(conversation.id)) {
 					
 		   <p>
-		       <input type="textarea" name="text" placeholder="new message" value="@form("text").value">
+		       <input type="textarea" name="text" placeholder="@(student.getLanguage().newMessage())" value="@form("text").value">
 		   </p>
 		   <p>
-		       <button type="submit">Submit</button>
+		       <button type="submit">@(student.getLanguage().submit())</button>
 		   </p>
 		   		   
 		   @if(form.hasGlobalErrors) {
