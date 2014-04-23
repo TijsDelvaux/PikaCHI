@@ -22,14 +22,14 @@
     <a class="log" href="@routes.Application.logout()">Logout</a></font>
     	<a class="log" href="@routes.Application.index()">Home</a></font>
     
-    <div class="titlefont">My advertisements</div>
+    <div class="titlefont">@(student.getLanguage().myAdvertisements())</div>
     
 		<div class="background">
-				Advertentie posten:
-                <a href="@routes.Application.addNewStudAdvertisement()"  class="lb">Bijles zoeken</a></br>
-                <a href="@routes.Application.addNewTutAdvertisement()"  class="lb">Bijles geven</a></br>
-                Advertentie's bekijken of aanpassen:
-                <a href="@routes.Application.viewMyOwnAdvertisements()" class="lb">Mijn advertenties</a></br>
+				@(student.getLanguage().postAdvertisement())
+                <a href="@routes.Application.addNewStudAdvertisement()"  class="lb">@(student.getLanguage().searchTutor())</a></br>
+                <a href="@routes.Application.addNewTutAdvertisement()"  class="lb">@(student.getLanguage().giveTutoring())</a></br>
+                @(student.getLanguage().changeAdvertisements())
+                <a href="@routes.Application.viewMyOwnAdvertisements()" class="lb">@(student.getLanguage().myAdvertisements())</a></br>
 		</div>                
 
     </body>
