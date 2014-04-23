@@ -186,8 +186,9 @@ public class Application extends Controller {
 
   	@Security.Authenticated(Secured.class)
     public static Result addNewMessage(Long id) {
-    	return ok(
-                postNewMessage.render(form(MessageForm.class), id)
+    	return redirect(
+//                postNewMessage.render(form(MessageForm.class), id)
+                routes.Application.viewMyConversation(id)
             );
     }
     
