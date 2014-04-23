@@ -233,11 +233,14 @@ public class Application extends Controller {
     }
   	
   	@Security.Authenticated(Secured.class)
-  	public static Result createNewConversation(String receive) {
+  	public static Result createNewConversation(String send, String receive) {
   		//Make a conversation
   		Student sender = Student.find.byId(request().username());
   		Student receiver = Student.find.byId(receive);
-  		Conversation c = new Conversation(sender, sender, new Message("Test", sender));
+  		Message m = new Message("test", sender);
+  		Conversation c = new Conversation(sender, receiver, null);
+  		c.messages.add(m);
+  		c.save();
   		//Show all the conversations
   		//Better: immediately go to the new conversation TODO!!
   		return viewMyConversations();

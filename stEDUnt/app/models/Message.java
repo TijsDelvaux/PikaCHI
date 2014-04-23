@@ -10,6 +10,8 @@ import play.db.ebean.*;
 
 import com.avaje.ebean.*;
 
+import java.text.SimpleDateFormat;
+
 @Entity
 public class Message extends Model{
 	
@@ -37,6 +39,15 @@ public class Message extends Model{
 	public Date getDate() {
 		return date;
 	}
+	
+	public String getSimpleDate(){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm"); // Set your date format
+		return sdf.format(date); // Get Date String according to date format
+	}
+	
+//	public String getShortDate(){
+//		return date.toString()+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+//	} 
 	
 	public Student getSender(){
 		return sender;

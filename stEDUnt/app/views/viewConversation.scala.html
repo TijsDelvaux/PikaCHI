@@ -20,12 +20,19 @@
     -->
     <article  class="conversations">
     	@for(index <- 0 until conversation.messages.size){
-    		
-    		<div class="bubble">    		
-   			 Sender: @conversation.messages(index).getSender().getName()</br>
-   			 Date: @conversation.messages(index).getDate()</br>
-   			 Text: @conversation.messages(index).getText()</br>
-			 </div>
+    		@if(conversation.messages(index).getSender() != student){
+	    		<div class="bubble">    		
+		   			 @conversation.messages(index).getSender().getName()</br>
+		   			 @conversation.messages(index).getSimpleDate()</br>
+		   			 @conversation.messages(index).getText()</br>
+				 </div>
+			 }else{
+			 	<div class="bubble">    		
+		   			 @conversation.messages(index).getSender().getName()</br>
+		   			 @conversation.messages(index).getSimpleDate()</br>
+		   			 @conversation.messages(index).getText()</br>
+				</div>
+			 }
    		}
    		</br>
    		<a href="@routes.Application.addNewMessage(conversation.id)">Post new message</a>

@@ -216,7 +216,7 @@ button:focus {
 }
 
 .bubble:after {
-	content: "";
+	content: " ";
 	position: relative;
 	top: -50px;
 	left: -25px;
@@ -229,7 +229,7 @@ button:focus {
 }
 
 .bubble:before {
-	content: "";
+	content: " ";
 	position: relative;
 	top: 33px;
 	left: -30px;
@@ -239,6 +239,11 @@ button:focus {
 	display: block;
 	width: 0;
 	z-index: 0;
+}
+
+.right {
+	float: right;
+	position: relative;
 }
 
 img.logo {
