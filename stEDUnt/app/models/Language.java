@@ -24,7 +24,8 @@ public enum Language {
 		public String post(){return "Post";}
 		public String tutorAdvertisement(){return "Advertentie bijlesgever";}
 		public String alreadyTutorAdvertisement(){return "Je hebt al een bijlesgeversadvertentie, je kan deze hier aanpassen:";}
-		public String price(){return "Prijs (&#8364/uur)";}
+		public String price(){return "Prijs";}
+		public String hour(){return "uur";}
 		public String notYetAstudentAdvertention(){return "Je hebt nog geen bijleszoekeradvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String notYetATutorAdvertention(){return "Je hebt nog geen bijlesgeversadvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
 		public String placeAdvertisement(){return "Plaats advertentie";}
@@ -61,6 +62,7 @@ public enum Language {
 		public String tutorAdvertisement(){return null;}
 		public String alreadyTutorAdvertisement(){return null;}
 		public String price(){return null;}
+		public String hour(){return null;}
 		public String notYetAstudentAdvertention(){return null;}
 		public String notYetATutorAdvertention(){return null;}
 		public String placeAdvertisement(){return null;}
@@ -94,6 +96,7 @@ public enum Language {
 	public abstract String tutorAdvertisement();
 	public abstract String alreadyTutorAdvertisement();
 	public abstract String price();
+	public abstract String hour();
 	public abstract String notYetAstudentAdvertention();
 	public abstract String notYetATutorAdvertention();
 	public abstract String placeAdvertisement();
