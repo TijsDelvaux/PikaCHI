@@ -57,11 +57,11 @@
     <a class="log" href="@routes.Application.logout()">Logout</a></font>	
     	<a class="log" href="@routes.Application.index()">Home</a></font>
     
-	<div class="titlefont">Advertisements</div><font font-align="right">
+	<div class="titlefont">@(student.getLanguage().advertisements())</div><font font-align="right">
 	
     <ul class='tabs'>
-			<li><a href="#student">Student Advertisements</a></li>
-			<li><a href="#tutor">Tutor Advertisements</a></li>
+			<li><a href="#student">@(student.getLanguage().tutorSearchers())</a></li>
+			<li><a href="#tutor">@(student.getLanguage().tutors())</a></li>
 		</ul>
 		<div id="student">
 				<article  class="advertisements">
@@ -75,16 +75,16 @@
 		    				</a>
 		   			 } 
 		   			 -->
-		   			 Student: @studAdvertisements(index).getStudent().getName()</br>
-		   			 Studies: @studAdvertisements(index).getStudies()</br>
-		   			 Description: @studAdvertisements(index).getDescription() </br>
-		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> 
+		   			 @studAdvertisements(index).getStudent().getName()</br>
+		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
+		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
+		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
 		   			 </article>
 			   		} 
 			   		</br>
 			   	}
 			   	
-			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">Plaats advertentie</a>
+			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">@(student.getLanguage().placeAdvertisement())</a>
 			   		
 			    </article>
 		</div>
@@ -101,16 +101,16 @@
 		    				</a>
 		   			 	}
 		   			 -->
-		   			 Student: @tutAdvertisements(index).getStudent().getName()</br>
-		   			 Studies: @tutAdvertisements(index).getStudies()</br>
-		   			 Description: @tutAdvertisements(index).getDescription() </br>
-				     Price: &euro;@tutAdvertisements(index).getPrice()/hour  </br>
-		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb"> Send a message </a> 
+		   			 @tutAdvertisements(index).getStudent().getName()</br>
+		   			 @(student.getLanguage().studies()): @tutAdvertisements(index).getStudies()</br>
+		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
+				     @(student.getLanguage().price()): @tutAdvertisements(index).getPrice()/hour  </br>
+		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb">  @(student.getLanguage().sendMessage()) </a> 
 					  </article>
 					}
 					</br>
 		   		}
-		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">Advertentie plaatsen</a></br>
+		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a></br>
 		    	</article>
 		</div>
 	

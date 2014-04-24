@@ -8,11 +8,14 @@ public enum Language {
 		public String myTutorAdvertisements() {return "Mijn bijles-advertenties";}
 		public String messages() {return "Berichten";}
 		public String advertisement(){return "Advertentie";}
+		public String advertisements(){return "Advertenties";}
 		public String viewAdvertisements(){return "Bekijk advertenties";}
 		public String myAdvertisements(){return "Mijn advertenties";}
 		public String postAdvertisement(){return "Advertentie posten: ";}
 		public String searchTutor(){return "Bijles zoeken";}
 		public String giveTutoring(){return "Bijles geven";}
+		public String tutorSearchers(){return "Bijleszoekenden";}
+		public String tutors(){return "Bijllesgevers";}
 		public String changeAdvertisements(){return "Advertentie's bekijken of aanpassen: ";}
 		public String newStudentAdvertisement(){return "Nieuwe advertentie bijleszoekende";}
 		public String newTutorAdvertisement(){return "Nieuwe advertentie bijlesgever";}
@@ -30,6 +33,7 @@ public enum Language {
 		public String read(){return "Lees";}
 		public String submit(){return "Verzend";}
 		public String newMessage(){return "Nieuw bericht";}
+		public String sendMessage(){return "Stuur bericht";}
 		
 		
 	}, 
@@ -40,11 +44,14 @@ public enum Language {
 		public String myTutorAdvertisements() {return null;}
 		public String messages() {return null;}
 		public String advertisement(){return null;}
+		public String advertisements(){return null;}
 		public String viewAdvertisements(){return null;}
 		public String myAdvertisements(){return null;}
 		public String postAdvertisement(){return null;}
 		public String searchTutor(){return null;}
 		public String giveTutoring(){return null;}
+		public String tutorSearchers(){return null;}
+		public String tutors(){return null;}
 		public String changeAdvertisements(){return null;}
 		public String newStudentAdvertisement(){return null;}
 		public String newTutorAdvertisement(){return null;}
@@ -62,6 +69,7 @@ public enum Language {
 		public String read(){return null;}
 		public String submit(){return null;}
 		public String newMessage(){return null;}
+		public String sendMessage(){return null;}
 		
 	};
 	
@@ -69,11 +77,14 @@ public enum Language {
 	public abstract String myTutorAdvertisements();
 	public abstract String messages();
 	public abstract String advertisement();
+	public abstract String advertisements();
 	public abstract String viewAdvertisements();
 	public abstract String myAdvertisements();
 	public abstract String postAdvertisement();
 	public abstract String searchTutor();
 	public abstract String giveTutoring();
+	public abstract String tutorSearchers();
+	public abstract String tutors();
 	public abstract String changeAdvertisements();
 	public abstract String newStudentAdvertisement();
 	public abstract String newTutorAdvertisement();
@@ -91,4 +102,5 @@ public enum Language {
 	public abstract String read();
 	public abstract String submit();
 	public abstract String newMessage();
+	public abstract String sendMessage();
 }
