@@ -104,7 +104,7 @@
 		   			 @tutAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @tutAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
-				     @(student.getLanguage().price()): &euro;@tutAdvertisements(index).getPrice()/@student.getLanguage().hour()  </br>
+				     @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())</br>
 		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb">  @(student.getLanguage().sendMessage()) </a> 
 					  </article>
 					}

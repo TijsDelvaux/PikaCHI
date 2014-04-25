@@ -31,7 +31,7 @@
 					       <textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tutorAdv.getDescription()"></textarea>
 					   </p>
 					   <p>
-					       <input type="price" name="price" placeholder=@(student.getLanguage().price()) value="@tutorAdv.getPrice()">
+					       <input type="price" name="price" placeholder="@(student.getLanguage().price()) (@(student.getLanguage().euroPerHour()))" value="@tutorAdv.getPrice()">
 					   </p>
 					   <p>
 					       <button type="submit">@(student.getLanguage().post())</button>
@@ -64,7 +64,7 @@
 					<textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tuForm("description").value"></textarea>
 				</p>
 				<p>
-					<input type="price" name="price" placeholder= "@(student.getLanguage().price()) (&euro;/@student.getLanguage().hour())" value="@tuForm("price").value">
+					<input type="price" name="price" placeholder= "@(student.getLanguage().price()) (@student.getLanguage().euroPerHour())" value="@tuForm("price").value">
 				</p>
 				<p>
 					<button type="submit">@(student.getLanguage().post())</button>
