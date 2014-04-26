@@ -1,0 +1,33 @@
+@(student: Student)
+
+@main("Start") {
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<div class="box">
+	<title>Facebook</title>
+	</div>
+</head>
+
+	
+
+<body>
+	<div class="box">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>
+	    
+	    <div class="background center">
+		<div class="titlefont">Facebook</div>
+	</div>
+
+	<div class=background>
+		@(student.getLanguage().textFacebook()) </br>
+		<a href="https://www.facebook.com/groups/stedunt/"  class="lb">@(student.getLanguage().goToFacebookGroup())</a></br>
+	</div>
+	
+	
+</body>
+</html>
+}
