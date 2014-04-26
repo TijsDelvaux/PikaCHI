@@ -335,6 +335,13 @@ public class Application extends Controller {
   		}
   		
   	}
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result viewFacebook(){
+    	return ok(viewFacebook.render(
+    	        Student.find.byId(request().username())
+    	    )); 
+    }
     
             
             

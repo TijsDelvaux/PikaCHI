@@ -34,7 +34,7 @@ POST	/newMessage						controllers.Application.addNewMessageForm(id:Long)
 
 GET		/myAdvertisements					controllers.Application.viewMyAdvertisements()
 
-
+GET		/Facebook						controllers.Application.viewFacebook()
 
 #GET     /messages            controllers.Application.viewMyMessages()
 GET		/conversations		 controllers.Application.viewMyConversations()

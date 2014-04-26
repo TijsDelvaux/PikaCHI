@@ -35,7 +35,8 @@ public enum Language {
 		public String submit(){return "Verzend";}
 		public String newMessage(){return "Nieuw bericht";}
 		public String sendMessage(){return "Stuur bericht";}
-		
+		public String textFacebook(){return "StEDUnt heeft ook een eigen Facebook groep. In deze groep kan je niet alleen discusieren over deze web-app, maar ook over hoe je nu het best een bijlesgever vindt en andere studie gerelateerde zaken!";}	
+		public String goToFacebookGroup(){return "Ga naar de Facebook groep";}
 		
 	}, 
 	
@@ -72,6 +73,8 @@ public enum Language {
 		public String submit(){return null;}
 		public String newMessage(){return null;}
 		public String sendMessage(){return null;}
+		public String textFacebook(){return null;}
+		public String goToFacebookGroup(){return null;}
 		
 	};
 	
@@ -106,4 +109,6 @@ public enum Language {
 	public abstract String submit();
 	public abstract String newMessage();
 	public abstract String sendMessage();
+	public abstract String textFacebook();
+	public abstract String goToFacebookGroup();
 }
