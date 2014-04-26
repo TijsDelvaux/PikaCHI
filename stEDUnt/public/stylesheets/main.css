@@ -333,7 +333,7 @@ img.logo {
 
 			.tabs a {
 				display:inline-block;
-				background:#617d29;
+				background:#98bf21;
 				color:#fff;
 				text-decoration:none;
 				
@@ -364,6 +364,6 @@ img.logo {
 			}
 
 			.tabs a.active {
-				background:#98bf21;
+				background:#617d29;
 				color:#000;
 			}
