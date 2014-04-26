@@ -15,8 +15,8 @@ public enum Language {
 		public String searchTutor(){return "Bijles zoeken";}
 		public String giveTutoring(){return "Bijles geven";}
 		public String tutorSearchers(){return "Bijleszoekenden";}
-		public String tutors(){return "Bijllesgevers";}
-		public String changeAdvertisements(){return "Advertentie's bekijken of aanpassen: ";}
+		public String tutors(){return "Bijlesgevers";}
+		public String changeAdvertisements(){return "Advertenties bekijken of aanpassen: ";}
 		public String newStudentAdvertisement(){return "Nieuwe advertentie bijleszoekende";}
 		public String newTutorAdvertisement(){return "Nieuwe advertentie bijlesgever";}
 		public String studies(){return "Studies";}
@@ -43,38 +43,38 @@ public enum Language {
 	English{
 
 		public String toString() {return "English";}
-		public String myTutorAdvertisements() {return null;}
-		public String messages() {return null;}
-		public String advertisement(){return null;}
-		public String advertisements(){return null;}
-		public String viewAdvertisements(){return null;}
-		public String myAdvertisements(){return null;}
-		public String postAdvertisement(){return null;}
-		public String searchTutor(){return null;}
-		public String giveTutoring(){return null;}
-		public String tutorSearchers(){return null;}
-		public String tutors(){return null;}
-		public String changeAdvertisements(){return null;}
-		public String newStudentAdvertisement(){return null;}
-		public String newTutorAdvertisement(){return null;}
-		public String studies(){return null;}
-		public String description(){return null;}
-		public String post(){return null;}
-		public String tutorAdvertisement(){return null;}
-		public String alreadyTutorAdvertisement(){return null;}
-		public String price(){return null;}
-		public String euroPerHour(){return null;}
-		public String notYetAstudentAdvertention(){return null;}
-		public String notYetATutorAdvertention(){return null;}
-		public String placeAdvertisement(){return null;}
-		public String conversations(){return null;}
-		public String conversationWith(){return null;}
-		public String read(){return null;}
-		public String submit(){return null;}
-		public String newMessage(){return null;}
-		public String sendMessage(){return null;}
-		public String textFacebook(){return null;}
-		public String goToFacebookGroup(){return null;}
+		public String myTutorAdvertisements() {return "My tutor advertisements";}
+		public String messages() {return "Messages";}
+		public String advertisement(){return "Advertisement";}
+		public String advertisements(){return "Advertisements";}
+		public String viewAdvertisements(){return "View advertisements";}
+		public String myAdvertisements(){return "My advertisements";}
+		public String postAdvertisement(){return "Post an advertisement: ";}
+		public String searchTutor(){return "Search a tutor";}
+		public String giveTutoring(){return "Become a tutor";}
+		public String tutorSearchers(){return "Tutor searchers";}
+		public String tutors(){return "Tutors";}
+		public String changeAdvertisements(){return "Change/view advertisement: ";}
+		public String newStudentAdvertisement(){return "New advertisement for searching a tutor";}
+		public String newTutorAdvertisement(){return "New tutor advertisement";}
+		public String studies(){return "Studies";}
+		public String description(){return "Description";}
+		public String post(){return "Post";}
+		public String tutorAdvertisement(){return "Tutor advertisement";}
+		public String alreadyTutorAdvertisement(){return "You already have a tutor advertisement, you can change it here:";}
+		public String price(){return "Price";}
+		public String euroPerHour(){return "\u20AC/hour";}
+		public String notYetAstudentAdvertention(){return "You don't have a tutor-searching advertisement yet. Click here to place one!";}
+		public String notYetATutorAdvertention(){return "You don't have a tutor advertisement yet. Click here to place one!";}
+		public String placeAdvertisement(){return "Place advertisement";}
+		public String conversations(){return "Conversations";}
+		public String conversationWith(){return "Conversation with";}
+		public String read(){return "Read";}
+		public String submit(){return "Submit";}
+		public String newMessage(){return "New message";}
+		public String sendMessage(){return "Send message";}
+		public String textFacebook(){return "StEDUnt also has a Facebook group. In this group you can discuss about the web-app, what you think the best way is to find a tutor and other studie related business!";}
+		public String goToFacebookGroup(){return "Go to the Facebook group";}
 		
 	};
 	
