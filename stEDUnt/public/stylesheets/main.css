@@ -364,6 +364,10 @@ img.logo {
 			}
 
 			.tabs a.active {
-				background:#617d29;
+				background:#70991A;
 				color:#000;
+			}
+			
+			.tabs a:hover{
+				background:#70991A;
 			}
