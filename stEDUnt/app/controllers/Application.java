@@ -222,9 +222,6 @@ public class Application extends Controller {
     	}
     	if(id == -1){
     		Conversation c = new Conversation(Student.find.byId(stud1),Student.find.byId(stud2));
-    		System.out.println("qqqqqqqqqqqqqqqq1qqqqqqqqqqqqqq");
-    		System.out.println(stud1);
-    		System.out.println(stud2);
     		c.save();
     		id = c.id;
     	}
@@ -252,6 +249,16 @@ public class Application extends Controller {
   	            );
   		}
   		else{
+  			//mark all read
+  			for(Message m: c.messages){
+    			if(!m.sender.email.equals(s.email)){
+    				m.setRead();
+    				m.save();
+    			}
+  			}
+  			
+  			
+  			
   		return ok(
                 viewConversation.render(s,c,form(MessageForm.class))
             );
@@ -348,7 +355,21 @@ public class Application extends Controller {
     	        Student.find.byId(request().username())
     	    )); 
     }
-    
+  	
+  	
+    public static int numberOfUnreadMessagesOf(Student student){
+    	int numberUnread = 0;
+    	List<Conversation> conversations = Conversation.findConversationsOfStudent(student);
+    	for(Conversation c: conversations){
+    		for(Message m: c.messages){
+    			if(!m.sender.email.equals(student.email) && !m.read){
+    				numberUnread++;
+    			}
+    		}
+    	}
+    	return numberUnread;
+    }
+  	    
             
             
     public static class Login {

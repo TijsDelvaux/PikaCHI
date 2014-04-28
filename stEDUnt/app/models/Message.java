@@ -19,6 +19,7 @@ public class Message extends Model{
     public long id;
     public String text;
     public Date date;
+    public boolean read = false; //read by receiver
     @ManyToOne
     public Student sender;
     
@@ -51,6 +52,10 @@ public class Message extends Model{
 	
 	public Student getSender(){
 		return sender;
+	}
+	
+	public void setRead(){
+		read = true;
 	}
 
 	
