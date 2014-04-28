@@ -206,8 +206,8 @@ button:focus {
 
 .bubble {
 	position: relative;
-	width: 100%;
-	padding: 0px;
+	width: 90%;
+	left:30px;
 	background: #617d29;
 	border: #FFFFFF solid 3px;
 	-webkit-border-radius: 27px;
@@ -226,6 +226,7 @@ button:focus {
 	display: block;
 	width: 0;
 	z-index: 1;
+	
 }
 
 .bubble:after {
@@ -249,21 +250,27 @@ button:focus {
 	display: block;
 	width: 0;
 	z-index: 0;
+	
 }
 
 .bubbleHeader {
 	text-align: left;
 	font-weight:bold;
+		position: relative;
+	left: 30px;
 }
 
 .bubbleBody {
 	text-align: left;
+	position: relative;
+	left: 30px;
 }
 
 .bubbleMe {
 	position: relative;
-	width: 100%;
-	padding: 0px;
+	width: 90%;
+	left:30px;
+	padding-bottom:5px;
 	background: #98bf21;
 	border: #FFFFFF solid 3px;
 	-webkit-border-radius: 27px;
@@ -298,7 +305,7 @@ button:focus {
 	content: " ";
 	position: relative;
 	top: 33px;
-	left: -30px;
+	left: -30px; 
 	border-style: solid;
 	border-width: 12px 27px 12px 0;
 	border-color: transparent #FFFFFF;
