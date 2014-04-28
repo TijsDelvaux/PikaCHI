@@ -89,7 +89,7 @@
 		   			 @studAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br></br>
-		   			 <a href="@routes.Application.addNewStudAdvertisement" class="lb">@(student.getLanguage().changeAdvertisements())</a></br>
+		   			 <a href="@routes.Application.changeStudAdvertisement(studAdvertisements(index).getId())" class="lb">@(student.getLanguage().changeAdvertisements())</a></br>
 		   			 }
 		   			 </article>
 			   			 
@@ -106,7 +106,7 @@
 				
 				@if(!Application.hasTutAdv(student.getEmail())){
 					@(student.getLanguage().notYetATutorAdvertention())
-					
+					<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
 					
 					
 				} else{				
@@ -130,7 +130,7 @@
 		   			  </article>
 		   		}
 		   		}
-		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
+		   		
 		   		
 		    	</article>
 		</div>

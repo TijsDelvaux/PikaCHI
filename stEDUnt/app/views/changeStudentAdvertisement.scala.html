@@ -5,7 +5,7 @@
 <html>
     <head>
     	<div class="box">
-        <title>New StudentAdvertisement</title>
+        <title>Change StudentAdvertisement</title>
         </div>
     </head>
     <body>
@@ -24,7 +24,7 @@
 	    <div class="background center">
 	    
 		@if(studentAdv != null){
-		@helper.form(routes.Application.addNewStudAdvertisementForm) {	
+		@helper.form(routes.Application.changeStudAdvertisementForm(studentAdv.getId())) {	
 			<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
@@ -51,39 +51,7 @@
 				</p>
 			}
 		}	
-		}else{
-		@helper.form(routes.Application.addNewStudAdvertisementForm) {
-		    <div class="titlefont">@(student.getLanguage().newStudentAdvertisement())</div>
-			<div class="input button">
-		    	<p>
-					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@stForm("studies").value">
-				</p>
-				<p>
-					<textarea  type="description" name="description" placeholder=@(student.getLanguage().description()) value="@stForm("description").value"></textarea>
-				</p>
-				<p>
-					<button type="submit">@(student.getLanguage().post())</button>
-				</p>
-			</div>
-		   
-			@if(stForm.hasGlobalErrors) {
-			<p class="error">
-				@stForm.globalError.message
-			</p>
-			}
-		
-			@if(flash.contains("success")) {
-				<p class="success">
-					@flash.get("success")
-				</p>
-			}
 		}
-		</div>
-		
-	</div>
-	
-
-}
     </body>
 </html>
 }

@@ -137,6 +137,9 @@ public class Application extends Controller {
   	@Security.Authenticated(Secured.class)
     public static Result addNewStudAdvertisementForm() {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
+        	String description = adForm.get().description;
+        	String studies = adForm.get().studies;
+        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description);
             if (adForm.hasErrors()) {
                 return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
             } else {
@@ -145,7 +148,7 @@ public class Application extends Controller {
                 );
             }
   		}
-  		
+  	
   		
   	@Security.Authenticated(Secured.class)
   	    public static Result addNewTutAdvertisementForm() {  
@@ -201,7 +204,31 @@ public class Application extends Controller {
             );
     }
   	
-    @Security.Authenticated(Secured.class)
+  	@Security.Authenticated(Secured.class)
+  	public static Result changeStudAdvertisement(Long adId){
+  		StudentAdvertisement studentAd = StudentAdvertisement.find.byId(adId);
+		return ok(
+                changeStudentAdvertisement.render(Student.find.byId(request().username()),
+                		form(StudentAdvertisementForm.class), studentAd)
+            );
+  	}
+  	
+  	@Security.Authenticated(Secured.class)
+    public static Result changeStudAdvertisementForm(Long adId) {  
+        	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
+        	String description = adForm.get().description;
+        	String studies = adForm.get().studies;
+        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, adId);
+            if (adForm.hasErrors()) {
+                return badRequest(changeStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
+            } else {
+                return redirect(
+                    routes.Application.start()
+                );
+            }
+  		}
+  	
+  	
     public static Result addNewTutAdvertisement() {
     	return ok(
                 postNewTutorAdvertisement.render(Student.find.byId(request().username()),form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
@@ -395,7 +422,6 @@ public class Application extends Controller {
             	return "username is null, make sure you are logged in";
             }
             
-            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description);
             return null;
             
         }

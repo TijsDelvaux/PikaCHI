@@ -25,6 +25,9 @@ GET     /myOwnAdvertisements            controllers.Application.viewMyOwnAdverti
 GET		/newStAdv						controllers.Application.addNewStudAdvertisement()
 POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
 
+GET		/changeStAdv				controllers.Application.changeStudAdvertisement(id:Long)
+POST	/changeStAdv				controllers.Application.changeStudAdvertisementForm(id:Long)
+
 GET		/newTutAdv						controllers.Application.addNewTutAdvertisement()
 POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm()
 
