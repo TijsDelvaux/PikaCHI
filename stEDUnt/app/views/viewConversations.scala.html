@@ -41,6 +41,8 @@
    			}else{
    			    @conversations(index).getParticipants.get(0).getName()</br>
    			}
+   			
+   			@conversations(index).getNumberOfUnreadMessagesFor(student) ongelezen berichten.
    			 
    			  <a href="@routes.Application.viewMyConversation(conversations(index).id)" class="lb">@(student.getLanguage().read())</a> </br>
    			  </article>
