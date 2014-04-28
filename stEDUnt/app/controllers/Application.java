@@ -384,6 +384,7 @@ public class Application extends Controller {
 
         public String studies;
     	public String description;
+    	public boolean test;
         
         public String validate() {        	
         	
@@ -395,7 +396,7 @@ public class Application extends Controller {
             	return "username is null, make sure you are logged in";
             }
             
-            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description);
+            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, test);
             return null;
             
         }
@@ -407,6 +408,7 @@ public class Application extends Controller {
         public String studies;
     	public String description;
     	public double price;
+    	public boolean test;
         
         public String validate() {        	
         	
@@ -418,7 +420,7 @@ public class Application extends Controller {
             	return "username is null, make sure you are logged in";
             }
             
-            models.TutorAdvertisement.create(Student.find.byId(request().username()), studies, description, price);
+            models.TutorAdvertisement.create(Student.find.byId(request().username()), studies, description, price, test);
             return null;
             
         }

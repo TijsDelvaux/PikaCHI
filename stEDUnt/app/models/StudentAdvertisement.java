@@ -10,8 +10,8 @@ import play.db.ebean.*;
 @Entity
 public class StudentAdvertisement extends Advertisement {
 	
-	public StudentAdvertisement(Student student, String studies, String description){
-		super(student,studies,description);
+	public StudentAdvertisement(Student student, String studies, String description, boolean testAd){
+		super(student,studies,description, testAd);
 	}
 
 	public StudentAdvertisement(Student student){
@@ -20,9 +20,9 @@ public class StudentAdvertisement extends Advertisement {
 	
 	//static methods
 	
-	public static StudentAdvertisement create(Student student, String studies, String description) {
+	public static StudentAdvertisement create(Student student, String studies, String description, boolean testAd) {
 		
-		StudentAdvertisement ad = new StudentAdvertisement(student, studies, description);
+		StudentAdvertisement ad = new StudentAdvertisement(student, studies, description, testAd);
 		ad.save();
         return ad;
     }

@@ -11,13 +11,13 @@ public class Global extends GlobalSettings {
     	if (Student.find.findRowCount() == 0) {
 	    	Student serge = new Student("serge@gmail.com", "Serge",	"pass");
 	    	serge.save();
-	    	StudentAdvertisement a = new StudentAdvertisement(serge, "aa", "bb");
+	    	StudentAdvertisement a = new StudentAdvertisement(serge, "aa", "bb",false);
 	    	a.save();
 	    	
 	    	
 	    	Student ine = new Student("ine@gmail.com", "Ine",	"pass");
 	    	ine.save();
-	    	TutorAdvertisement t = new TutorAdvertisement(ine, "aa", "bb", 20);
+	    	TutorAdvertisement t = new TutorAdvertisement(ine, "aa", "bb", 20,true);
 	    	t.save();
 	    	
 	    	
