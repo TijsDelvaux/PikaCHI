@@ -6,24 +6,26 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<div class="box">
 	<title>Facebook</title>
-	</div>
 </head>
 
 	
 
 <body>
-	<div class="box">
+	<div class="background_center">
 	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
-	    <a class="log" href="@routes.Application.index()">Home</a></font>
-	    
-	    <div class="background center">
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+		<div class="background_center3">
 		<div class="titlefont">Facebook</div>
 	</div>
+</div>
+<div class="background_center"> &nbsp;</div>
 
-	<div class=background>
+
+	<div class=content>
 		@(student.getLanguage().textFacebook()) </br>
+		</br>
 		<a href="https://www.facebook.com/groups/stedunt/"  class="lb">@(student.getLanguage().goToFacebookGroup())</a></br>
 	</div>
 	

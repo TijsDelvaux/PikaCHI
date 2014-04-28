@@ -19,9 +19,19 @@
 			</div
     </header>
   -->    
-  	<a class="log" href="@routes.Application.logout()">Logout</a></font>
-  	<a class="log" href="@routes.Application.index()">Home</a></font>
-	<div class="box titlefont">@(student.getLanguage().conversations()) (@conversations.size)</div></h1>
+
+		<div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().conversations()) (@conversations.size)</div>
+	</div>
+	
+	<div class="background_center"> &nbsp;</div>
+	
+	
     <article  class="conversations">
     	@for(index <- 0 until conversations.size){
     		<article  class="conversation">
@@ -36,7 +46,6 @@
    			  </article>
    		}
     </article>
-
 
     </body>
 </html>

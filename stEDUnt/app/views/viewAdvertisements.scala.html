@@ -54,10 +54,17 @@
 	
     <body>
     
-    <a class="log" href="@routes.Application.logout()">Logout</a></font>	
-    	<a class="log" href="@routes.Application.index()">Home</a></font>
-    
-	<div class="titlefont">@(student.getLanguage().advertisements())</div><font font-align="right">
+    <div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().advertisements())</div>
+	</div>
+	
+	<div class="background_center"> &nbsp;</div>
+
 	
     <ul class='tabs'>
 			<li><a href="#student">@(student.getLanguage().tutorSearchers())</a></li>
@@ -76,7 +83,7 @@
 		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
 		   			 @if(tutAdvertisements(index).getStudent()!=student){
-		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
+		   				 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
 		   			 }
 		   			 </article>
 			   		</br>
