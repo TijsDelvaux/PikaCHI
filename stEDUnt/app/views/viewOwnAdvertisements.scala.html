@@ -75,27 +75,27 @@
 				
 				@if(!Application.hasStudAdv(student.getEmail())){
 					@(student.getLanguage().notYetAstudentAdvertention())
+					<a href="@routes.Application.addNewStudAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
 					
 				} else{				
 				
 		    	@for(index <- 0 until studAdvertisements.size){
 		    		@if(studAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
-		    		<h2> @(student.getLanguage().advertisement()) @index 
+		    		<h2 style="color:black"> @(student.getLanguage().advertisement())
 		    				<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
 		   			 @studAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
-		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
-		   			 </br>
+		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br></br>
+		   			 <a href="@routes.Application.addNewStudAdvertisement" class="lb">@(student.getLanguage().changeAdvertisements())</a></br>
 		   			 }
 		   			 </article>
 			   			 
 			   		}
 			   		}
 			   		</br> 
-			   		<a href="@routes.Application.addNewStudAdvertisement"  class="lb">@(student.getLanguage().placeAdvertisement())</a>
 			   		
 			    </article>
 		</div>
@@ -114,7 +114,7 @@
 		    	@for(index <- 0 until tutAdvertisements.size){
 		    		@if(tutAdvertisements(index).getStudent()==student){
 		    		<article class="advertisement">
-		    		<h2>  @(student.getLanguage().advertisement()) @index 
+		    		<h2 style="color:black">  @(student.getLanguage().advertisement())
 		    				<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
@@ -122,7 +122,7 @@
 		   			 @tutAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @tutAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
-		   			 @(student.getLanguage().price()): @tutAdvertisements(index).getPrice()/ @(student.getLanguage().euroPerHour())  </br></br>
+		   			 @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())  </br></br>
 		   			 					<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().changeAdvertisements())</a></br>
 		   			 
 		   			 }

@@ -29,6 +29,21 @@ public class StudentAdvertisement extends Advertisement {
 	
     public static Model.Finder<Long,StudentAdvertisement> find = new Model.Finder(Long.class, StudentAdvertisement.class);
 	
+    public static StudentAdvertisement findFromUser(String user) {
+        try{
+        	
+        	System.out.println(user);
+        	
+        	return find.where()
+            .eq("student_email", user)
+            .findList().get(0);
+        }
+        catch(IndexOutOfBoundsException e){
+        	return null;
+        }
+    }
+    
+    
 //    public static List<StudentAdvertisement> findStudentAdvInvolving(String user) {
 //        return find.where()
 //            .eq("members.email", user)

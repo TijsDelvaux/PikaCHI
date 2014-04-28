@@ -1,4 +1,4 @@
-@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm])
+@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm], studentAdv: StudentAdvertisement)
 
 @main("Start"){
 
@@ -22,6 +22,36 @@
     	<a class="log" href="@routes.Application.index()">Home</a></font>
     
 	    <div class="background center">
+	    
+		@if(studentAdv != null){
+			
+			<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
+        	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
+			<div class="input button">
+		    	<p>
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@(studentAdv.getStudies())">
+				</p>
+				<p>
+					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())"></textarea>
+				</p>
+				<p>
+					<button type="submit">@(student.getLanguage().post())</button>
+				</p>
+			</div>
+		   
+			@if(stForm.hasGlobalErrors) {
+			<p class="error">
+				@stForm.globalError.message
+			</p>
+			}
+		
+			@if(flash.contains("success")) {
+				<p class="success">
+					@flash.get("success")
+				</p>
+			}
+			
+		}else{
 		    <div class="titlefont">@(student.getLanguage().newStudentAdvertisement())</div>
 			<div class="input button">
 		    	<p>
@@ -46,9 +76,11 @@
 					@flash.get("success")
 				</p>
 			}
+		}
 		</div>
+		
 	</div>
-
+	
 
 }
     </body>

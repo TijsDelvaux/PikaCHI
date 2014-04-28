@@ -28,7 +28,7 @@
 					       <input type="studies" name="studies" placeholder="@(student.getLanguage().studies())" value="@tutorAdv.getStudies()">
 					   </p> 
 					   <p>
-					       <textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tutorAdv.getDescription()"></textarea>
+					       <textarea type="description" name="description" placeholder=@tutorAdv.getDescription() value="@tutorAdv.getDescription()"></textarea>
 					   </p>
 					   <p>
 					       <input type="price" name="price" placeholder="@(student.getLanguage().price()) (@(student.getLanguage().euroPerHour()))" value="@tutorAdv.getPrice()">

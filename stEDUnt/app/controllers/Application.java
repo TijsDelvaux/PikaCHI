@@ -138,7 +138,7 @@ public class Application extends Controller {
     public static Result addNewStudAdvertisementForm() {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
             if (adForm.hasErrors()) {
-                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm));
+                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
             } else {
                 return redirect(
                     routes.Application.start()
@@ -197,7 +197,7 @@ public class Application extends Controller {
     public static Result addNewStudAdvertisement() {
     	return ok(
                 postNewStudentAdvertisement.render(Student.find.byId(request().username()),
-                		form(StudentAdvertisementForm.class))
+                		form(StudentAdvertisementForm.class),StudentAdvertisement.findFromUser(request().username()))
             );
     }
   	
