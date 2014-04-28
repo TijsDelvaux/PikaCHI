@@ -75,7 +75,7 @@
 				
 				@if(!Application.hasStudAdv(student.getEmail())){
 					@(student.getLanguage().notYetAstudentAdvertention())
-					<a href="@routes.Application.addNewStudAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
+					
 					
 				} else{				
 				
@@ -95,7 +95,8 @@
 			   			 
 			   		}
 			   		}
-			   		</br> 
+			   		</br>
+			   		<a href="@routes.Application.addNewStudAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a> 
 			   		
 			    </article>
 		</div>
@@ -105,7 +106,7 @@
 				
 				@if(!Application.hasTutAdv(student.getEmail())){
 					@(student.getLanguage().notYetATutorAdvertention())
-					<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
+					
 					
 					
 				} else{				
@@ -129,6 +130,7 @@
 		   			  </article>
 		   		}
 		   		}
+		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a>
 		   		
 		    	</article>
 		</div>
