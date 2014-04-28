@@ -211,6 +211,9 @@ public class Application extends Controller {
     public static long getConversationID(String stud1, String stud2){
     	List<Conversation> convs = Conversation.findConversationsOfStudent(Student.find.byId(stud1));
     	long id = -1; //default value, new conv needs to be created
+    	if(stud1.equals(stud2)){
+    		return -2;
+    	}
     	for(Conversation c: convs){
     			if((c.participants.get(0).email.equals(stud1) && c.participants.get(1).email.equals(stud2)) ||
     			   (c.participants.get(0).email.equals(stud2) && c.participants.get(1).email.equals(stud1))	){
@@ -219,6 +222,9 @@ public class Application extends Controller {
     	}
     	if(id == -1){
     		Conversation c = new Conversation(Student.find.byId(stud1),Student.find.byId(stud2));
+    		System.out.println("qqqqqqqqqqqqqqqq1qqqqqqqqqqqqqq");
+    		System.out.println(stud1);
+    		System.out.println(stud2);
     		c.save();
     		id = c.id;
     	}
