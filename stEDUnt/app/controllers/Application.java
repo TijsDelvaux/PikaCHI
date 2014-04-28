@@ -139,7 +139,8 @@ public class Application extends Controller {
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
         	String description = adForm.get().description;
         	String studies = adForm.get().studies;
-        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description);
+        	boolean testAd = adForm.get().test;
+        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description,testAd);
             if (adForm.hasErrors()) {
                 return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
             } else {
@@ -218,7 +219,8 @@ public class Application extends Controller {
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
         	String description = adForm.get().description;
         	String studies = adForm.get().studies;
-        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, adId);
+        	boolean testAd = adForm.get().test;
+        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, adId, testAd);
             if (adForm.hasErrors()) {
                 return badRequest(changeStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
             } else {
@@ -238,6 +240,9 @@ public class Application extends Controller {
     public static long getConversationID(String stud1, String stud2){
     	List<Conversation> convs = Conversation.findConversationsOfStudent(Student.find.byId(stud1));
     	long id = -1; //default value, new conv needs to be created
+    	if(stud1.equals(stud2)){
+    		return -2;
+    	}
     	for(Conversation c: convs){
     			if((c.participants.get(0).email.equals(stud1) && c.participants.get(1).email.equals(stud2)) ||
     			   (c.participants.get(0).email.equals(stud2) && c.participants.get(1).email.equals(stud1))	){
@@ -273,6 +278,16 @@ public class Application extends Controller {
   	            );
   		}
   		else{
+  			//mark all read
+  			for(Message m: c.messages){
+    			if(!m.sender.email.equals(s.email)){
+    				m.setRead();
+    				m.save();
+    			}
+  			}
+  			
+  			
+  			
   		return ok(
                 viewConversation.render(s,c,form(MessageForm.class))
             );
@@ -369,7 +384,21 @@ public class Application extends Controller {
     	        Student.find.byId(request().username())
     	    )); 
     }
-    
+  	
+  	
+    public static int numberOfUnreadMessagesOf(Student student){
+    	int numberUnread = 0;
+    	List<Conversation> conversations = Conversation.findConversationsOfStudent(student);
+    	for(Conversation c: conversations){
+    		for(Message m: c.messages){
+    			if(!m.sender.email.equals(student.email) && !m.read){
+    				numberUnread++;
+    			}
+    		}
+    	}
+    	return numberUnread;
+    }
+  	    
             
             
     public static class Login {
@@ -411,6 +440,7 @@ public class Application extends Controller {
 
         public String studies;
     	public String description;
+    	public boolean test;
         
         public String validate() {        	
         	
@@ -421,7 +451,8 @@ public class Application extends Controller {
             if(request().username() == null){
             	return "username is null, make sure you are logged in";
             }
-            
+
+//            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, test);
             return null;
             
         }
@@ -433,6 +464,7 @@ public class Application extends Controller {
         public String studies;
     	public String description;
     	public double price;
+    	public boolean test;
         
         public String validate() {        	
         	
@@ -444,7 +476,7 @@ public class Application extends Controller {
             	return "username is null, make sure you are logged in";
             }
             
-            models.TutorAdvertisement.create(Student.find.byId(request().username()), studies, description, price);
+            models.TutorAdvertisement.create(Student.find.byId(request().username()), studies, description, price, test);
             return null;
             
         }

@@ -61,10 +61,18 @@
 
     
     
-    <a class="log" href="@routes.Application.logout()">Logout</a></font>
-    	<a class="log" href="@routes.Application.index()">Home</a></font>
+	<div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().myAdvertisements())</div>
+	</div>
+	
+</div>
+<div class="background_center"> &nbsp;</div>
     	
-	<div class="titlefont">@(student.getLanguage().myAdvertisements())</div><font font-align="right">
 	
 		<ul class='tabs'>
 			<li><a href="#student">@(student.getLanguage().searchTutor())</a></li>

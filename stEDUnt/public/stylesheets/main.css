@@ -11,6 +11,34 @@ header {
 	font-size:18px;
 }
 
+.background_center{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.background_center3{
+position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.background_center2{
+		position: relative; 
+		left: -50%;
+}
+
+.background_center1{
+		position: absolute; 
+		left: 50%;
+
+}
+
+.content{
+	padding:10px;
+}
+
 .box {
 	vertical-align: top;
 }
@@ -36,6 +64,10 @@ body {
 }
 
 a.log:link,a.log:visited {
+	
+	position: relative; 
+	top: -10px;
+	
 	display: block;
 	font-weight: normal;
 	color: #FFFFFF;
@@ -206,8 +238,8 @@ button:focus {
 
 .bubble {
 	position: relative;
-	width: 100%;
-	padding: 0px;
+	width: 90%;
+	left:30px;
 	background: #617d29;
 	border: #FFFFFF solid 3px;
 	-webkit-border-radius: 27px;
@@ -226,6 +258,7 @@ button:focus {
 	display: block;
 	width: 0;
 	z-index: 1;
+	
 }
 
 .bubble:after {
@@ -249,21 +282,27 @@ button:focus {
 	display: block;
 	width: 0;
 	z-index: 0;
+	
 }
 
 .bubbleHeader {
 	text-align: left;
 	font-weight:bold;
+		position: relative;
+	left: 30px;
 }
 
 .bubbleBody {
 	text-align: left;
+	position: relative;
+	left: 30px;
 }
 
 .bubbleMe {
 	position: relative;
-	width: 100%;
-	padding: 0px;
+	width: 90%;
+	left:30px;
+	padding-bottom:5px;
 	background: #98bf21;
 	border: #FFFFFF solid 3px;
 	-webkit-border-radius: 27px;
@@ -298,7 +337,7 @@ button:focus {
 	content: " ";
 	position: relative;
 	top: 33px;
-	left: -30px;
+	left: -30px; 
 	border-style: solid;
 	border-width: 12px 27px 12px 0;
 	border-color: transparent #FFFFFF;

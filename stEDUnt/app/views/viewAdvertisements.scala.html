@@ -54,10 +54,17 @@
 	
     <body>
     
-    <a class="log" href="@routes.Application.logout()">Logout</a></font>	
-    	<a class="log" href="@routes.Application.index()">Home</a></font>
-    
-	<div class="titlefont">@(student.getLanguage().advertisements())</div><font font-align="right">
+    <div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().advertisements())</div>
+	</div>
+	
+	<div class="background_center"> &nbsp;</div>
+
 	
     <ul class='tabs'>
 			<li><a href="#student">@(student.getLanguage().tutorSearchers())</a></li>
@@ -66,21 +73,19 @@
 		<div id="student">
 				<article  class="advertisements">
 		    	@for(index <- 0 until studAdvertisements.size){
-		    		@if(studAdvertisements(index).getStudent() != student){
 		    		<article class="advertisement">
-		    		<!-- 
 		    			@if(studAdvertisements(index).getStudent()==student){
 		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
 		   			 } 
-		   			 -->
 		   			 @studAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
-		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
+		   			 @if(tutAdvertisements(index).getStudent()!=student){
+		   				 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
+		   			 }
 		   			 </article>
-			   		} 
 			   		</br>
 			   	}
 			   	
@@ -92,22 +97,23 @@
 		<div id="tutor">
 				<article  class="advertisements">
 		    	@for(index <- 0 until tutAdvertisements.size){
-		    		@if(tutAdvertisements(index).getStudent() != student){
 		    		<article class="advertisement">
-		    		<!-- 
+		    		
 		    			@if(tutAdvertisements(index).getStudent()==student){
 		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),1)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13"></h2>
 		    				</a>
 		   			 	}
-		   			 -->
+		   			 
 		   			 @tutAdvertisements(index).getStudent().getName()</br>
 		   			 @(student.getLanguage().studies()): @tutAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
 				     @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())</br>
+				     @if(tutAdvertisements(index).getStudent()!=student){
 		   			 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),tutAdvertisements(index).getStudent().getEmail()))" class="lb">  @(student.getLanguage().sendMessage()) </a> 
+					 }
 					  </article>
-					}
+					
 					</br>
 		   		}
 		   		<a href="@routes.Application.addNewTutAdvertisement" class="lb">@(student.getLanguage().placeAdvertisement())</a></br>

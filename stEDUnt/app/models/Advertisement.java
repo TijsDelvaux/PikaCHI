@@ -14,11 +14,12 @@ public class Advertisement extends Model {
 	public Student student;
 	public String studies;
 	public String description;
+	public boolean testAd;
 	
 	//static methods
 	
-	public static Advertisement create(Student student, String studies, String description) {
-		Advertisement ad = new Advertisement(student, studies, description);
+	public static Advertisement create(Student student, String studies, String description, boolean testAd) {
+		Advertisement ad = new Advertisement(student, studies, description, testAd);
 		ad.save();
         return ad;
     }
@@ -33,10 +34,11 @@ public class Advertisement extends Model {
     
     //actual implementation
 	
-	public Advertisement(Student student, String studies, String description){
+	public Advertisement(Student student, String studies, String description, boolean testAd){
 		this.studies = studies;
 		this.description = description;
 		this.student = student;
+		this.testAd = testAd;
 	}
 
 	public Advertisement(Student student){

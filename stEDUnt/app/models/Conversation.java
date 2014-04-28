@@ -40,6 +40,16 @@ public class Conversation extends Model{
 		
 		messages = new ArrayList<>();
 	}
+	
+	public int getNumberOfUnreadMessagesFor(Student student){
+		int numberUnread = 0;
+		for(Message m: messages){
+			if(!m.sender.email.equals(student.email) && !m.read){
+				numberUnread++;
+			}
+		}
+		return numberUnread;
+	}
 
 	public static Finder<String,Conversation> find = new Finder<String,Conversation>(
 	        String.class, Conversation.class

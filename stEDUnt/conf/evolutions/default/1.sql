@@ -13,6 +13,7 @@ create table message (
   conversation_id           bigint not null,
   text                      varchar(255),
   date                      timestamp,
+  read                      boolean,
   sender_email              varchar(255),
   constraint pk_message primary key (id))
 ;
@@ -31,6 +32,7 @@ create table student_advertisement (
   student_email             varchar(255),
   studies                   varchar(255),
   description               varchar(255),
+  test_ad                   boolean,
   constraint pk_student_advertisement primary key (id))
 ;
 
@@ -39,6 +41,7 @@ create table tutor_advertisement (
   student_email             varchar(255),
   studies                   varchar(255),
   description               varchar(255),
+  test_ad                   boolean,
   price                     double,
   constraint pk_tutor_advertisement primary key (id))
 ;

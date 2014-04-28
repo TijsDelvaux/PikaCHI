@@ -14,8 +14,8 @@ public class TutorAdvertisement extends Advertisement{
 	
 	private double price;
 	
-	public TutorAdvertisement(Student student, String studies, String description, double price){
-		super(student,studies,description);
+	public TutorAdvertisement(Student student, String studies, String description, double price, boolean testAd){
+		super(student,studies,description, testAd);
 		this.price = price;
 	}
 	
@@ -35,11 +35,11 @@ public class TutorAdvertisement extends Advertisement{
 	
 	//static methods
 	
-	public static TutorAdvertisement create(Student student, String studies, String description, double price) {
+	public static TutorAdvertisement create(Student student, String studies, String description, double price, boolean testAd) {
 		
 		TutorAdvertisement ad = TutorAdvertisement.findFromUser(student.email);
 		if(ad==null){		
-			ad = new TutorAdvertisement(student, studies, description, price);
+			ad = new TutorAdvertisement(student, studies, description, price, testAd);
 		}
 		else{
 			ad.setDescription(description);
