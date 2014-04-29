@@ -39,7 +39,7 @@
 					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@(studentAdv.getStudies())">
 				</p>
 				<p>
-					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())"></textarea>
+					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())">@(studentAdv.getDescription())</textarea>
 				</p>
 				<p>
 					<button type="submit">@(student.getLanguage().save())</button>
