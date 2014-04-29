@@ -19,7 +19,8 @@ public enum Language {
 		public String changeAdvertisements(){return "Advertenties bekijken of aanpassen: ";}
 		public String newStudentAdvertisement(){return "Nieuwe advertentie bijleszoekende";}
 		public String newTutorAdvertisement(){return "Nieuwe advertentie bijlesgever";}
-		public String studies(){return "Studies";}
+		public String studies(){return "Studierichting";}
+		public String course(){return "Vak(ken)";}
 		public String description(){return "Beschrijving";}
 		public String post(){return "Post";}
 		public String save(){return "Opslaan";}
@@ -61,6 +62,7 @@ public enum Language {
 		public String newStudentAdvertisement(){return "New advertisement for searching a tutor";}
 		public String newTutorAdvertisement(){return "New tutor advertisement";}
 		public String studies(){return "Studies";}
+		public String course(){return "Course(s)";}
 		public String description(){return "Description";}
 		public String post(){return "Post";}
 		public String save(){return "Save";}
@@ -100,6 +102,7 @@ public enum Language {
 	public abstract String newStudentAdvertisement();
 	public abstract String newTutorAdvertisement();
 	public abstract String studies();
+	public abstract String course();
 	public abstract String description();
 	public abstract String post();
 	public abstract String save();

@@ -33,10 +33,10 @@
 		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {	
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
-		    	<p>
-					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@(studentAdv.getStudies())">
+		    	<p>@(studentAdv.getCourse())
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().course()) value="@(studentAdv.getCourse())">
 				</p>
-				<p>
+				<p>@(studentAdv.getDescription())
 					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())"></textarea>
 				</p>
 				<p>
@@ -65,10 +65,10 @@
 		}else{
 		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {
 			<div class="input button">
-		    	<p>
-					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@stForm("studies").value">
+		    	<p>@(student.getLanguage().course())</br>
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().course()) value="@stForm("course").value">
 				</p>
-				<p>
+				<p>@(student.getLanguage().description())</br>
 					<textarea  type="description" name="description" placeholder=@(student.getLanguage().description()) value="@stForm("description").value"></textarea>
 				</p>
 				<input type="checkbox" name="test">Dit is een test-Advertentie<br>

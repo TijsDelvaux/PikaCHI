@@ -2,8 +2,11 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.*;
+
 import play.db.ebean.*;
+
 import com.avaje.ebean.*;
 
 @Entity
@@ -17,15 +20,20 @@ public class Student extends Model{
     public String email;
     public String name;
     public String password;
-    public Language language = Language.Nederlands;
+    public String lastName;
+    public Language language;
+    public String studies;
     
-	public Student(String email, String name, String password){
+	public Student(String email, String name, String lastName, String password, Language lang, String studies){
 //		studentAdv = null;
 //		tutorAdv = null;
 //		messages = new ArrayList<Message>();
 		this.email = email;
 		this.name = name;
 		this.password = password;
+		this.lastName = lastName;
+		this.language = lang;
+		this.studies = studies;
 		
 	}
 	
@@ -44,6 +52,10 @@ public class Student extends Model{
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getLastName(){
+		return lastName;
 	}
 
 	public void setName(String name) {

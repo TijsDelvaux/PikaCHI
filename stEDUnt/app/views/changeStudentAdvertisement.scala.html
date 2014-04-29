@@ -36,7 +36,7 @@
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
 		    	<p>
-					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@(studentAdv.getStudies())">
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().course()) value="@(studentAdv.getCourse())">
 				</p>
 				<p>
 					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())">@(studentAdv.getDescription())</textarea>

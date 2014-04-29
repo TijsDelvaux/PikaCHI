@@ -89,7 +89,7 @@
 			   			 	</a>
 		   			 } 
 		   			 </br>
-		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
+		   			 @(student.getLanguage().course()): @studAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
 		   			 @if(studAdvertisements(index).getStudent()!=student){
 		   				 <a href="@routes.Application.addNewMessage(Application.getConversationID(student.getEmail(),studAdvertisements(index).getStudent().getEmail()))" class="lb"> @(student.getLanguage().sendMessage()) </a> 
@@ -121,7 +121,7 @@
 			   			 		<img class="center logo" src="@routes.Assets.at("images/edit-icon.png")" width="15"></h2>
 			   			 	</a>
 		   			 	}</br>
-		   			 @(student.getLanguage().studies()): @tutAdvertisements(index).getStudies()</br>
+		   			 @(student.getLanguage().course()): @tutAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
 				     @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())</br>
 				     @if(tutAdvertisements(index).getStudent()!=student){

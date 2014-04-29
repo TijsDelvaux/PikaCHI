@@ -29,13 +29,13 @@
         	
         	 @helper.form(routes.Application.addNewTutAdvertisementForm(src)) {
 					<div class="input button">
-					   <p>
-					       <input type="studies" name="studies" placeholder="@(student.getLanguage().studies())" value="@tutorAdv.getStudies()">
+					   <p>@(student.getLanguage().course())</br>
+					       <input type="studies" name="studies" placeholder="@(student.getLanguage().course())" value="@tutorAdv.getCourse()">
 					   </p> 
-					   <p>
+					   <p>@tutorAdv.getDescription()</br>
 					       <textarea type="description" name="description" placeholder=@tutorAdv.getDescription() value="@tutorAdv.getDescription()">@tutorAdv.getDescription()</textarea>
 					   </p>
-					   <p>
+					   <p>@(student.getLanguage().price()) (@student.getLanguage().euroPerHour())</br>
 					       <input type="price" name="price" placeholder="@(student.getLanguage().price()) (@(student.getLanguage().euroPerHour()))" value="@tutorAdv.getPrice()">
 					   </p>
 						<p>
@@ -64,13 +64,13 @@
         }else{
 			@helper.form(routes.Application.addNewTutAdvertisementForm(src)) {
 				<div class="input button">
-				<p>
-					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@tuForm("studies").value">
+				<p>@(student.getLanguage().course())</br>
+					<input type="studies" name="studies" placeholder=@(student.getLanguage().course()) value="@tuForm("studies").value">
 			    </p>
-				<p>
+				<p>@(student.getLanguage().description())</br>
 					<textarea type="description" name="description" placeholder=@(student.getLanguage().description()) value="@tuForm("description").value"></textarea>
 				</p>
-				<p>
+				<p>@(student.getLanguage().price()) (@student.getLanguage().euroPerHour())</br>
 					<input type="price" name="price" placeholder= "@(student.getLanguage().price()) (@student.getLanguage().euroPerHour())" value="@tuForm("price").value">
 				</p>
 				<p>

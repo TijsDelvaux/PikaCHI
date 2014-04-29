@@ -12,7 +12,7 @@ public class Advertisement extends Model {
     public Long id;
 	@ManyToOne
 	public Student student;
-	public String studies;
+	public String course;
 	public String description;
 	public boolean testAd;
 	
@@ -34,29 +34,29 @@ public class Advertisement extends Model {
     
     //actual implementation
 	
-	public Advertisement(Student student, String studies, String description, boolean testAd){
-		this.studies = studies;
+	public Advertisement(Student student, String course, String description, boolean testAd){
+		this.course = course;
 		this.description = description;
 		this.student = student;
 		this.testAd = testAd;
 	}
 
-	public Advertisement(Student student){
-		this.student = student;
-		this.studies = "";
-		this.description = "";
-	}
+//	public Advertisement(Student student){
+//		this.student = student;
+//		this.course = "";
+//		this.description = "";
+//	}
 	
 	public Student getStudent() {
 		return student;
 	}
 	
-	public String getStudies() {
-		return studies;
+	public String getCourse() {
+		return course;
 	}
 
-	public void setStudies(String studies) {
-		this.studies = studies;
+	public void setCourse(String course) {
+		this.course = course;
 	}
 
 	public String getDescription() {

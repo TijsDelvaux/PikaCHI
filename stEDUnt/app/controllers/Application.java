@@ -2,6 +2,7 @@ package controllers;
 
 import models.Advertisement;
 import models.Conversation;
+import models.Language;
 import models.Message;
 import models.Student;
 import models.StudentAdvertisement;
@@ -498,14 +499,25 @@ public class Application extends Controller {
         public String email;
         public String password;
         public String name;
+        public String studies;
+        public String lastName;
+        public String language;
         
         public String validate() {
         	
-            if (email.length()==0 | password.length()==0 | name.length()==0) {
+            if (email.length()==0 | password.length()==0 | name.length()==0 | lastName.length()==0 | studies.length()==0) {
               return "Please fill in all required forms";
             }
             
-        	Student s = new Student(email, name, password);
+            Language lang = Language.Nederlands;
+            
+            if(language.equals("EN")){
+            	lang = Language.English;
+            }
+                     
+            
+            
+        	Student s = new Student(email, name, lastName, password, lang, studies);
         	s.save();
         	
             return null;
