@@ -8,17 +8,22 @@
     </head>
     <body>
 
-<!-- 	<header>
-		<span>New tutor advertisement</span>
-	</header>
- -->
-        <a class="log" href="@routes.Application.logout()">Logout</a></font> 
-        	<a class="log" href="@routes.Application.index()">Home</a></font>
+
+     <div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().tutorAdvertisement())</div>
+	</div>
+	
+	<div class="background_center"> &nbsp;</div>
+ 
         
         <div class="box">
 	    <div class="background center">  	
         @if(tutorAdv != null) {
-        	<div class="titlefont">@(student.getLanguage().tutorAdvertisement())</div>
         	<font color="white">@(student.getLanguage().alreadyTutorAdvertisement())</font>
         	
         	
@@ -57,7 +62,6 @@
         	
         	
         }else{
-        	<h1>@(student.getLanguage().tutorAdvertisement())</h1>
 			@helper.form(routes.Application.addNewTutAdvertisementForm(src)) {
 				<div class="input button">
 				<p>

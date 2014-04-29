@@ -13,14 +13,24 @@
         
     
     <div class="box">
-    <a class="log" href="@routes.Application.logout()">Logout</a></font>
-    	<a class="log" href="@routes.Application.index()">Home</a></font>
+
+     <div class="background_center">
+	    <a class="log" href="@routes.Application.logout()">Logout</a></font>
+	    <a class="log" href="@routes.Application.index()">Home</a></font>    	    
+	 	 &nbsp;
+	
+	<div class="background_center3">
+		<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
+	</div>
+	
+	<div class="background_center"> &nbsp;</div>
+
+
     
 	    <div class="background center">
 	    
 		@if(studentAdv != null){
 		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {	
-			<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
 		    	<p>
@@ -54,7 +64,6 @@
 		}	
 		}else{
 		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {
-		    <div class="titlefont">@(student.getLanguage().newStudentAdvertisement())</div>
 			<div class="input button">
 		    	<p>
 					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@stForm("studies").value">
