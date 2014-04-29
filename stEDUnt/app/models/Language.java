@@ -22,10 +22,11 @@ public enum Language {
 		public String studies(){return "Studies";}
 		public String description(){return "Beschrijving";}
 		public String post(){return "Post";}
+		public String save(){return "Opslaan";}
 		public String tutorAdvertisement(){return "Advertentie bijlesgever";}
 		public String studentAdvertisement(){return "Advertentie bijleszoekende";}
 		public String alreadyTutorAdvertisement(){return "Je hebt al een bijlesgeversadvertentie, je kan deze hier aanpassen:";}
-		public String alreadyStudentAdvertisement(){return "Je hebt al een advertentie om bijles te vragen, je kan deze hier aanpassen:";}
+		public String alreadyStudentAdvertisement(){return "Je kan hier je bestaande advertentie aanpassen:";}
 		public String price(){return "Prijs";}
 		public String euroPerHour(){return "\u20AC/uur";}
 		public String notYetAstudentAdvertention(){return "Je hebt nog geen bijleszoekeradvertentie geplaatst. Klik hier om er nu 1 te plaatsen!";}
@@ -62,6 +63,7 @@ public enum Language {
 		public String studies(){return "Studies";}
 		public String description(){return "Description";}
 		public String post(){return "Post";}
+		public String save(){return "Save";}
 		public String tutorAdvertisement(){return "Tutor advertisement";}
 		public String studentAdvertisement(){return "Tutor-seaching advertisement";}
 		public String alreadyTutorAdvertisement(){return "You already have a tutor advertisement, you can change it here:";}
@@ -100,6 +102,7 @@ public enum Language {
 	public abstract String studies();
 	public abstract String description();
 	public abstract String post();
+	public abstract String save();
 	public abstract String tutorAdvertisement();
 	public abstract String studentAdvertisement();
 	public abstract String alreadyTutorAdvertisement();

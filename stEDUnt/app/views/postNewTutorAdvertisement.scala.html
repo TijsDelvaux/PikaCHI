@@ -1,4 +1,4 @@
-@(student: Student, tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement)
+@(student: Student, tuForm: play.data.Form[Application.TutorAdvertisementForm], tutorAdv: TutorAdvertisement, src: Long)
 
 @main("Start"){
 
@@ -22,7 +22,7 @@
         	<font color="white">@(student.getLanguage().alreadyTutorAdvertisement())</font>
         	
         	
-        	 @helper.form(routes.Application.addNewTutAdvertisementForm) {
+        	 @helper.form(routes.Application.addNewTutAdvertisementForm(src)) {
 					<div class="input button">
 					   <p>
 					       <input type="studies" name="studies" placeholder="@(student.getLanguage().studies())" value="@tutorAdv.getStudies()">
@@ -58,7 +58,7 @@
         	
         }else{
         	<h1>@(student.getLanguage().tutorAdvertisement())</h1>
-			@helper.form(routes.Application.addNewTutAdvertisementForm) {
+			@helper.form(routes.Application.addNewTutAdvertisementForm(src)) {
 				<div class="input button">
 				<p>
 					<input type="studies" name="studies" placeholder=@(student.getLanguage().studies()) value="@tuForm("studies").value">

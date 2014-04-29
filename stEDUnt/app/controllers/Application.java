@@ -135,31 +135,64 @@ public class Application extends Controller {
     }
   	
   	@Security.Authenticated(Secured.class)
-    public static Result addNewStudAdvertisementForm() {  
+    public static Result addNewStudAdvertisementForm(Long src) {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
-        	String description = adForm.get().description;
-        	String studies = adForm.get().studies;
-        	boolean testAd = adForm.get().test;
-        	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description,testAd);
+
             if (adForm.hasErrors()) {
-                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
+                return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null,src));
             } else {
-                return redirect(
-                    routes.Application.start()
-                );
+            	String description = adForm.get().description;
+            	String studies = adForm.get().studies;
+            	boolean testAd = adForm.get().test;
+            	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description,testAd);
+            	if(src==1){
+              		return ok(
+            	            viewAdvertisements.render(
+            	            		Student.find.byId(request().username()), 
+            	            		StudentAdvertisement.find.all(),
+            	            		TutorAdvertisement.find.all()
+            	            		)
+            	        );
+              		}
+              		
+              		else{
+              		return ok(
+              				viewOwnAdvertisements.render(
+            	            		Student.find.byId(request().username()), 
+            	            		StudentAdvertisement.find.all(),
+            	            		TutorAdvertisement.find.all()
+            	            		)
+            	        );
+              		}
             }
   		}
   	
   		
   	@Security.Authenticated(Secured.class)
-  	    public static Result addNewTutAdvertisementForm() {  
+  	    public static Result addNewTutAdvertisementForm(Long src) {  
   		Form<TutorAdvertisementForm> adForm = Form.form(TutorAdvertisementForm.class).bindFromRequest();
         if (adForm.hasErrors()) {
-            return badRequest(postNewTutorAdvertisement.render(Student.find.byId(request().username()),adForm, null));
+            return badRequest(postNewTutorAdvertisement.render(Student.find.byId(request().username()),adForm, null, src));
         } else {
-            return redirect(
-                routes.Application.start()
-            );
+        	if(src==1){
+          		return ok(
+        	            viewAdvertisements.render(
+        	            		Student.find.byId(request().username()), 
+        	            		StudentAdvertisement.find.all(),
+        	            		TutorAdvertisement.find.all()
+        	            		)
+        	        );
+          		}
+          		
+          		else{
+          		return ok(
+          				viewOwnAdvertisements.render(
+        	            		Student.find.byId(request().username()), 
+        	            		StudentAdvertisement.find.all(),
+        	            		TutorAdvertisement.find.all()
+        	            		)
+        	        );
+          		}
         }
         }
   	
@@ -173,10 +206,6 @@ public class Application extends Controller {
 	    	Message m = new Message(mesForm.field("text").value().toString(), Student.find.byId(request().username()));
 	    	
 	    	Conversation c = null;
-	    	
-//	    	if(id == -1){
-//	    		c = new Conversation(Student.find.byId(request().username()), participant2, m);
-//	    	}
 	    	
       		c = Conversation.find.byId(id.toString());    		
       		c.messages.add(m);
@@ -198,42 +227,65 @@ public class Application extends Controller {
     
    
   	@Security.Authenticated(Secured.class)
-    public static Result addNewStudAdvertisement() {
+    public static Result addNewStudAdvertisement(Long src) {
     	return ok(
                 postNewStudentAdvertisement.render(Student.find.byId(request().username()),
-                		form(StudentAdvertisementForm.class),StudentAdvertisement.findFromUser(request().username()))
+                		form(StudentAdvertisementForm.class),null,src)
             );
+//    	return ok(
+//                postNewStudentAdvertisement.render(Student.find.byId(request().username()),
+//                		form(StudentAdvertisementForm.class),StudentAdvertisement.findFromUser(request().username()))
+//            );
     }
   	
   	@Security.Authenticated(Secured.class)
-  	public static Result changeStudAdvertisement(Long adId){
+  	public static Result changeStudAdvertisement(Long adId, Long src){
   		StudentAdvertisement studentAd = StudentAdvertisement.find.byId(adId);
 		return ok(
                 changeStudentAdvertisement.render(Student.find.byId(request().username()),
-                		form(StudentAdvertisementForm.class), studentAd)
+                		form(StudentAdvertisementForm.class), studentAd, src)
             );
   	}
   	
+  	//src: 1 = viewAdvertisements
+  	//src: 2 = viewMyOwnAdvertisements
   	@Security.Authenticated(Secured.class)
-    public static Result changeStudAdvertisementForm(Long adId) {  
+    public static Result changeStudAdvertisementForm(Long adId, Long src) {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
         	String description = adForm.get().description;
         	String studies = adForm.get().studies;
         	boolean testAd = adForm.get().test;
         	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, adId, testAd);
             if (adForm.hasErrors()) {
-                return badRequest(changeStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null));
+                return badRequest(changeStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null,src));
             } else {
-                return redirect(
-                    routes.Application.start()
-                );
+            	if(src==1){
+              		return ok(
+            	            viewAdvertisements.render(
+            	            		Student.find.byId(request().username()), 
+            	            		StudentAdvertisement.find.all(),
+            	            		TutorAdvertisement.find.all()
+            	            		)
+            	        );
+              		}
+              		
+              		else{
+              		return ok(
+              				viewOwnAdvertisements.render(
+            	            		Student.find.byId(request().username()), 
+            	            		StudentAdvertisement.find.all(),
+            	            		TutorAdvertisement.find.all()
+            	            		)
+            	        );
+              		}
             }
   		}
   	
-  	
-    public static Result addNewTutAdvertisement() {
+  	@Security.Authenticated(Secured.class)
+    public static Result addNewTutAdvertisement(Long src) {
     	return ok(
-                postNewTutorAdvertisement.render(Student.find.byId(request().username()),form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()))
+                postNewTutorAdvertisement.render(
+                		Student.find.byId(request().username()),form(TutorAdvertisementForm.class), TutorAdvertisement.findFromUser(request().username()),src)
             );
     }
     

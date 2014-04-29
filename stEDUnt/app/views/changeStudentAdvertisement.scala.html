@@ -1,4 +1,4 @@
-@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm], studentAdv: StudentAdvertisement)
+@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm], studentAdv: StudentAdvertisement, src: Long)
 
 @main("Start"){
 
@@ -24,7 +24,7 @@
 	    <div class="background center">
 	    
 		@if(studentAdv != null){
-		@helper.form(routes.Application.changeStudAdvertisementForm(studentAdv.getId())) {	
+		@helper.form(routes.Application.changeStudAdvertisementForm(studentAdv.getId(),src)) {	
 			<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
@@ -35,7 +35,7 @@
 					<textarea  type="description" name="description" placeholder=@(studentAdv.getDescription()) value="@(studentAdv.getDescription())"></textarea>
 				</p>
 				<p>
-					<button type="submit">@(student.getLanguage().post())</button>
+					<button type="submit">@(student.getLanguage().save())</button>
 				</p>
 			</div>
 		   

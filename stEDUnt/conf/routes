@@ -22,14 +22,14 @@ GET     /advertisements            controllers.Application.viewAllAdvertisements
 GET     /myOwnAdvertisements            controllers.Application.viewMyOwnAdvertisements()
 
 
-GET		/newStAdv						controllers.Application.addNewStudAdvertisement()
-POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm()
+GET		/newStAdv						controllers.Application.addNewStudAdvertisement(src:Long)
+POST	/newStAdv					controllers.Application.addNewStudAdvertisementForm(src:Long)
 
-GET		/changeStAdv				controllers.Application.changeStudAdvertisement(id:Long)
-POST	/changeStAdv				controllers.Application.changeStudAdvertisementForm(id:Long)
+GET		/changeStAdv				controllers.Application.changeStudAdvertisement(id:Long, src:Long)
+POST	/changeStAdv				controllers.Application.changeStudAdvertisementForm(id:Long, src:Long)
 
-GET		/newTutAdv						controllers.Application.addNewTutAdvertisement()
-POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm()
+GET		/newTutAdv						controllers.Application.addNewTutAdvertisement(src:Long)
+POST	/newTutAdv					controllers.Application.addNewTutAdvertisementForm(src:Long)
 
 GET		/newMessage						controllers.Application.addNewMessage(id:Long)
 POST	/newMessage						controllers.Application.addNewMessageForm(id:Long)

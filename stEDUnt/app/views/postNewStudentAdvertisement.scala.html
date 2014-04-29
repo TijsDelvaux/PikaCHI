@@ -1,4 +1,4 @@
-@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm], studentAdv: StudentAdvertisement)
+@(student: Student, stForm: play.data.Form[Application.StudentAdvertisementForm], studentAdv: StudentAdvertisement, src: Long)
 
 @main("Start"){
 
@@ -9,12 +9,7 @@
         </div>
     </head>
     <body>
-    <!--
-        <header>
-            <span>New student advertisement</span>
-        </header>
-     -->
-     
+
         
     
     <div class="box">
@@ -24,7 +19,7 @@
 	    <div class="background center">
 	    
 		@if(studentAdv != null){
-		@helper.form(routes.Application.addNewStudAdvertisementForm) {	
+		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {	
 			<div class="titlefont">@(student.getLanguage().studentAdvertisement())</div>
         	<font color="white">@(student.getLanguage().alreadyStudentAdvertisement())</font>
 			<div class="input button">
@@ -58,7 +53,7 @@
 			}
 		}	
 		}else{
-		@helper.form(routes.Application.addNewStudAdvertisementForm) {
+		@helper.form(routes.Application.addNewStudAdvertisementForm(src)) {
 		    <div class="titlefont">@(student.getLanguage().newStudentAdvertisement())</div>
 			<div class="input button">
 		    	<p>
