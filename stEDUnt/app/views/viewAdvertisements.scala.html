@@ -73,7 +73,12 @@
 		<div id="student">
 				<article  class="advertisements">
 		    	@for(index <- 0 until studAdvertisements.size){
-		    		<article class="advertisement">
+		    		@if(studAdvertisements(index).isTest()){
+		    			<article class="testadvertisement">
+		    			<div class=testAdv>TEST</div>
+		    		}else{
+		    			<article class="advertisement">
+		    		}
 		    		@studAdvertisements(index).getStudent().getName()
 		    			@if(studAdvertisements(index).getStudent()==student){
 		    			 	<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),1)">
@@ -101,10 +106,12 @@
 		<div id="tutor">
 				<article  class="advertisements">
 		    	@for(index <- 0 until tutAdvertisements.size){
-		    		<article class="advertisement">
-		    		
-		    			
-		   			 
+		    		@if(tutAdvertisements(index).isTest()){
+		    			<article class="testadvertisement">
+		    			<div class=testAdv>TEST</div>
+		    		}else{
+		    			<article class="advertisement">
+		    		}
 		   			 @tutAdvertisements(index).getStudent().getName()
 		   			 @if(tutAdvertisements(index).getStudent()==student){
 		   			 	<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),1)">
@@ -124,7 +131,11 @@
 					
 					</br>
 		   		}
+		   		
+		   		
+		   		@if(!Application.hasTutAdv(student.getEmail())){
 		   		<a href="@routes.Application.addNewTutAdvertisement(1)" class="lb">@(student.getLanguage().placeAdvertisement())</a></br>
+		   		}
 		    	</article>
 		</div>
 	

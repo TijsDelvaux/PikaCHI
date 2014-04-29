@@ -138,12 +138,32 @@ public class Application extends Controller {
     public static Result addNewStudAdvertisementForm(Long src) {  
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
 
+        	
+        	
             if (adForm.hasErrors()) {
+            	
+            	
+            	System.out.println("ERRORS");
+            	System.out.println(adForm.errorsAsJson());
+            	System.out.println(adForm.errors().entrySet());
+
+            	
+            	
+            	
                 return badRequest(postNewStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null,src));
             } else {
+            	
             	String description = adForm.get().description;
             	String studies = adForm.get().studies;
             	boolean testAd = adForm.get().test;
+            	
+            	
+
+            	if(testAd){
+            		System.out.println("CREATED TESTAD");
+            	}
+            	
+            	
             	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description,testAd);
             	if(src==1){
               		return ok(
@@ -251,11 +271,17 @@ public class Application extends Controller {
   	//src: 2 = viewMyOwnAdvertisements
   	@Security.Authenticated(Secured.class)
     public static Result changeStudAdvertisementForm(Long adId, Long src) {  
+  		
+  		  		
         	Form<StudentAdvertisementForm> adForm = Form.form(StudentAdvertisementForm.class).bindFromRequest();
         	String description = adForm.get().description;
         	String studies = adForm.get().studies;
         	boolean testAd = adForm.get().test;
+
+        	
         	StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, adId, testAd);
+
+        	
             if (adForm.hasErrors()) {
                 return badRequest(changeStudentAdvertisement.render(Student.find.byId(request().username()),adForm,null,src));
             } else {
@@ -494,8 +520,12 @@ public class Application extends Controller {
     	public String description;
     	public boolean test;
         
-        public String validate() {        	
+        public String validate() {    
         	
+        	if(test!= true && test!= false){
+        		test=true;
+        	}
+        	       	
             if (studies.length()==0 | description.length()==0) {
               return "Please fill in all required forms";
             }
@@ -503,11 +533,13 @@ public class Application extends Controller {
             if(request().username() == null){
             	return "username is null, make sure you are logged in";
             }
+            
 
 //            models.StudentAdvertisement.create(Student.find.byId(request().username()), studies, description, test);
             return null;
             
         }
+
 
     }
     
@@ -518,7 +550,11 @@ public class Application extends Controller {
     	public double price;
     	public boolean test;
         
-        public String validate() {        	
+        public String validate() {      
+        	
+        	if(test!= true && test!= false){
+        		test=true;
+        	}
         	
             if (studies.length()==0 | description.length()==0) {
               return "Please fill in all required forms";

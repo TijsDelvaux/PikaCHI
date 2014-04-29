@@ -89,7 +89,17 @@
 				
 		    	@for(index <- 0 until studAdvertisements.size){
 		    		@if(studAdvertisements(index).getStudent()==student){
-		    		<article class="advertisement">
+		    		
+		    		
+		    		@if(studAdvertisements(index).isTest()){
+		    			<article class="testadvertisement">
+		    			<div class=testAdv>TEST</div>
+		    		}else{
+		    			<article class="advertisement">
+		    		}
+		    		
+		    		
+		    		
 		    		<h2 style="color:black"> @(student.getLanguage().advertisement()) @index
 		    				<a href="@routes.Application.deleteStudAdvertisement(studAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="15">
@@ -100,7 +110,7 @@
 		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudies()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>		   			 
 
-		   			 </br>
+		   			 
 		   			 }
 		   			 </article>
 			   			 
@@ -125,7 +135,15 @@
 				
 		    	@for(index <- 0 until tutAdvertisements.size){
 		    		@if(tutAdvertisements(index).getStudent()==student){
-		    		<article class="advertisement">
+		    			
+		    			
+		    			@if(tutAdvertisements(index).isTest()){
+		    			<article class="testadvertisement">
+		    			<div class=testAdv>TEST</div>
+		    		}else{
+		    			<article class="advertisement">
+		    		}
+		    			
 		    		<h2 style="color:black">  @(student.getLanguage().advertisement())
 		    				<a href="@routes.Application.deleteTutAdvertisement(tutAdvertisements(index).getId(),2)">
 		    					<img class="center logo" src="@routes.Assets.at("images/Button-Delete-icon.png")" width="13">

@@ -71,5 +71,9 @@ public class Advertisement extends Model {
 		return id;
 	}
 	
+	public boolean isTest(){
+		return testAd;
+	}
+	
 	
 }

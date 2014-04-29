@@ -154,6 +154,18 @@ article.advertisement {
 	color:#000000;
 }
 
+article.testadvertisement {
+	background-color: #cecee6;
+	color:#000000;
+}
+
+.testAdv{
+    position:absolute;
+    font-size:47px;
+    font-weight:bold;
+    opacity:0.4;
+}
+
 article.conversation {
 	background-color: #CEE6CE;
 	color:#000000;
