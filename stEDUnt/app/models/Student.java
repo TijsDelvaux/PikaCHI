@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import play.db.ebean.*;
 
 import com.avaje.ebean.*;
@@ -39,6 +41,22 @@ public class Student extends Model{
 		this.statistics = new ArrayList<Statistic>();
 		
 	}
+	
+	
+//	public static String createPassword(String clearString)  {
+//	    return BCrypt.hashpw(clearString, BCrypt.gensalt());
+//	}
+//	
+//	public static boolean checkPassword(String candidate, String encryptedPassword) {
+//	    if (candidate == null) {
+//	        return false;
+//	    }
+//	    if (encryptedPassword == null) {
+//	        return false;
+//	    }
+//	    return BCrypt.checkpw(candidate, encryptedPassword);
+//	}
+	
 	
 	public List<Statistic> getStatistics(){
 		return statistics;
