@@ -486,7 +486,8 @@ public class Application extends Controller {
         public String password;
         
         public String validate() {
-            if (Student.authenticate(email, password) == null) {
+        	email = email.toLowerCase();
+        	if (Student.authenticate(email, password) == null) {
               return "Invalid user or password";
             }
             return null;

@@ -28,13 +28,12 @@ public class Student extends Model{
 //		studentAdv = null;
 //		tutorAdv = null;
 //		messages = new ArrayList<Message>();
-		this.email = email;
+		this.email = email.toLowerCase();
 		this.name = name;
 		this.password = password;
 		this.lastName = lastName;
 		this.language = lang;
 		this.studies = studies;
-		
 	}
 	
 	public static Finder<String,Student> find = new Finder<String,Student>(
@@ -42,7 +41,7 @@ public class Student extends Model{
 	    ); 
 	
 	public static Student authenticate(String email, String password) {
-        return find.where().eq("email", email)
+        return find.where().eq("email", email.toLowerCase())
             .eq("password", password).findUnique();
     }
 	
