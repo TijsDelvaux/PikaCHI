@@ -47,6 +47,14 @@ public class Application extends Controller {
         );
     }
     
+	@Security.Authenticated(Secured.class)
+    public static Result admin(){
+    	return ok(admin.render(
+    	        Student.find.byId(request().username()),
+    	        Student.find.all()
+    	    )); 
+    }
+    
     public static Result registerNewUser() {
     	Form<Register> regForm = Form.form(Register.class).bindFromRequest();
         if (regForm.hasErrors()) {

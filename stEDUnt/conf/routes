@@ -48,3 +48,6 @@ GET		/deleteTutAdv 		 controllers.Application.deleteTutAdvertisement(id:Long, sr
 															
 # start page         
 GET     /start                 controllers.Application.start()
+
+
+GET     /admin                 controllers.Application.admin()
