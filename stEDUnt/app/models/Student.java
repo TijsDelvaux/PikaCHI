@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 import play.db.ebean.*;
 
