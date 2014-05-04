@@ -155,7 +155,7 @@
 			   			 		<img class="center logo" src="@routes.Assets.at("images/edit-icon.png")" width="15"></h2>
 			   			 	</a>
 		    		</h2>
-		   			 @tutAdvertisements(index).getStudent().getName()</br>
+		   			 @tutAdvertisements(index).getStudent().getName() @tutAdvertisements(index).getStudent().getLastName()</br>
 		   			 @(student.getLanguage().course()): @tutAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
 		   			 @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())  </br></br>

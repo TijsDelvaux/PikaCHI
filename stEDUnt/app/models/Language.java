@@ -3,7 +3,12 @@ package models;
 public enum Language {
 	
 	Nederlands{
-
+		
+		public String firstName(){return "Voornaam";}
+		public String lastName(){return "Achternaam";}
+		public String email(){return "Email";}
+		public String password(){return "Wachtwoord";}
+		public String language(){return "Taal";}
 		public String toString() {return "Nederlands";}
 		public String myTutorAdvertisements() {return "Mijn bijles-advertenties";}
 		public String messages() {return "Berichten";}
@@ -20,7 +25,7 @@ public enum Language {
 		public String newStudentAdvertisement(){return "Nieuwe advertentie bijleszoekende";}
 		public String newTutorAdvertisement(){return "Nieuwe advertentie bijlesgever";}
 		public String studies(){return "Studierichting";}
-		public String course(){return "Vak(ken)";}
+		public String course(){return "Vak";}
 		public String description(){return "Beschrijving";}
 		public String post(){return "Post";}
 		public String save(){return "Opslaan";}
@@ -45,7 +50,11 @@ public enum Language {
 	}, 
 	
 	English{
-
+		public String firstName(){return "Firstname";}
+		public String lastName(){return "Lastname";}
+		public String email(){return "Email";}
+		public String password(){return "Password";}
+		public String language(){return "Language";}
 		public String toString() {return "English";}
 		public String myTutorAdvertisements() {return "My tutor advertisements";}
 		public String messages() {return "Messages";}

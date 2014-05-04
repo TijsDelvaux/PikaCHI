@@ -36,7 +36,7 @@
     		@if(conversation.messages(index).getSender() != student){
 	    		<div class="bubble">   
 	    			<div class="bubbleHeader"> 		
-		   			 @conversation.messages(index).getSender().getName() 
+		   			 @conversation.messages(index).getSender().getName() @conversation.messages(index).getSender().getLastName() 
 		   			 (@conversation.messages(index).getSimpleDate()):</br>
 		   			 </div>
 		   			 <div class="bubbleBody">
@@ -46,7 +46,7 @@
 			 }else{
 			 	<div class="bubbleMe">    	
 			 		<div class="bubbleHeader"> 		
-		   			 @conversation.messages(index).getSender().getName() 
+		   			 @conversation.messages(index).getSender().getName() @conversation.messages(index).getSender().getLastName() 
 		   			 (@conversation.messages(index).getSimpleDate()):</br>
 		   			  </div>
 		   			  <div class="bubbleBody">

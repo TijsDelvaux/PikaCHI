@@ -40,9 +40,9 @@
     		<article  class="conversation">
     		@(student.getLanguage().conversationWith()) 
     		@if(conversations(index).getParticipants.get(0).getName() == student.getName()){
-   			 	@conversations(index).getParticipants.get(1).getName()</br>
+   			 	@conversations(index).getParticipants.get(1).getName() @conversations(index).getParticipants.get(1).getLastName()</br>
    			}else{
-   			    @conversations(index).getParticipants.get(0).getName()</br>
+   			    @conversations(index).getParticipants.get(0).getName() @conversations(index).getParticipants.get(0).getLastName()</br>
    			}
    			
    			@conversations(index).getNumberOfUnreadMessagesFor(student) ongelezen berichten.
