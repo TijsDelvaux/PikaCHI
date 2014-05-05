@@ -92,7 +92,7 @@
 			   			 	</a>
 		   			 } 
 		   			 </br>
-		   			 @(student.getLanguage().studies()): @(student.getStudies())</br>
+		   			 @(student.getLanguage().studies()): @studAdvertisements(index).getStudent().getStudies()</br>
 		   			 @(student.getLanguage().course()): @studAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>
 		   			 @if(studAdvertisements(index).getStudent()!=student){
@@ -125,7 +125,7 @@
 			   			 		<img class="center logo" src="@routes.Assets.at("images/edit-icon.png")" width="15"></h2>
 			   			 	</a>
 		   			 	}</br>
-		   			 @(student.getLanguage().studies()): @(student.getStudies()) </br>
+		   			 @(student.getLanguage().studies()): @(tutAdvertisements(index).getStudent().getStudies()) </br>
 		   			 @(student.getLanguage().course()): @tutAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
 				     @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())</br>

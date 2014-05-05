@@ -29,7 +29,7 @@
 	 	 &nbsp;
 	
 	<div class="background_center3">
-		<div class="titlefont">@(student.getLanguage().conversations()) (@conversations.size)</div>
+		<div class="titlefont">@(student.getLanguage().conversations())</div>
 	</div>
 	
 	<div class="background_center"> &nbsp;</div>
@@ -38,17 +38,19 @@
     <article  class="conversations">
     	@for(index <- 0 until conversations.size){
     		<article  class="conversation">
-    		@(student.getLanguage().conversationWith()) 
-    		@if(conversations(index).getParticipants.get(0).getName() == student.getName()){
-   			 	@conversations(index).getParticipants.get(1).getName() @conversations(index).getParticipants.get(1).getLastName()</br>
-   			}else{
-   			    @conversations(index).getParticipants.get(0).getName() @conversations(index).getParticipants.get(0).getLastName()</br>
-   			}
+    		@if(conversations(index).getMessages().size() != 0){
+	    		@(student.getLanguage().conversationWith()) 
+	    		@if(conversations(index).getParticipants.get(0).getName() == student.getName()){
+	   			 	@conversations(index).getParticipants.get(1).getName() @conversations(index).getParticipants.get(1).getLastName()</br>
+	   			}else{
+	   			    @conversations(index).getParticipants.get(0).getName() @conversations(index).getParticipants.get(0).getLastName()</br>
+	   			}
    			
    			@conversations(index).getNumberOfUnreadMessagesFor(student) ongelezen berichten.
    			 
    			  <a href="@routes.Application.viewMyConversation(conversations(index).id)" class="lb">@(student.getLanguage().read())</a> </br>
    			  </article>
+   			}
    		}
     </article>
 

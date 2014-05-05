@@ -18,11 +18,21 @@ create table message (
   constraint pk_message primary key (id))
 ;
 
+create table statistic (
+  id                        bigint not null,
+  student_email             varchar(255) not null,
+  date                      timestamp,
+  page                      varchar(255),
+  constraint pk_statistic primary key (id))
+;
+
 create table student (
   email                     varchar(255) not null,
   name                      varchar(255),
   password                  varchar(255),
+  last_name                 varchar(255),
   language                  integer,
+  studies                   varchar(255),
   constraint ck_student_language check (language in (0,1)),
   constraint pk_student primary key (email))
 ;
@@ -30,7 +40,7 @@ create table student (
 create table student_advertisement (
   id                        bigint not null,
   student_email             varchar(255),
-  studies                   varchar(255),
+  course                    varchar(255),
   description               varchar(255),
   test_ad                   boolean,
   constraint pk_student_advertisement primary key (id))
@@ -39,7 +49,7 @@ create table student_advertisement (
 create table tutor_advertisement (
   id                        bigint not null,
   student_email             varchar(255),
-  studies                   varchar(255),
+  course                    varchar(255),
   description               varchar(255),
   test_ad                   boolean,
   price                     double,
@@ -56,6 +66,8 @@ create sequence conversation_seq;
 
 create sequence message_seq;
 
+create sequence statistic_seq;
+
 create sequence student_seq;
 
 create sequence student_advertisement_seq;
@@ -66,10 +78,12 @@ alter table message add constraint fk_message_conversation_1 foreign key (conver
 create index ix_message_conversation_1 on message (conversation_id);
 alter table message add constraint fk_message_sender_2 foreign key (sender_email) references student (email) on delete restrict on update restrict;
 create index ix_message_sender_2 on message (sender_email);
-alter table student_advertisement add constraint fk_student_advertisement_stude_3 foreign key (student_email) references student (email) on delete restrict on update restrict;
-create index ix_student_advertisement_stude_3 on student_advertisement (student_email);
-alter table tutor_advertisement add constraint fk_tutor_advertisement_student_4 foreign key (student_email) references student (email) on delete restrict on update restrict;
-create index ix_tutor_advertisement_student_4 on tutor_advertisement (student_email);
+alter table statistic add constraint fk_statistic_student_3 foreign key (student_email) references student (email) on delete restrict on update restrict;
+create index ix_statistic_student_3 on statistic (student_email);
+alter table student_advertisement add constraint fk_student_advertisement_stude_4 foreign key (student_email) references student (email) on delete restrict on update restrict;
+create index ix_student_advertisement_stude_4 on student_advertisement (student_email);
+alter table tutor_advertisement add constraint fk_tutor_advertisement_student_5 foreign key (student_email) references student (email) on delete restrict on update restrict;
+create index ix_tutor_advertisement_student_5 on tutor_advertisement (student_email);
 
 
 
@@ -87,6 +101,8 @@ drop table if exists conversation_student;
 
 drop table if exists message;
 
+drop table if exists statistic;
+
 drop table if exists student;
 
 drop table if exists student_advertisement;
@@ -98,6 +114,8 @@ SET REFERENTIAL_INTEGRITY TRUE;
 drop sequence if exists conversation_seq;
 
 drop sequence if exists message_seq;
+
+drop sequence if exists statistic_seq;
 
 drop sequence if exists student_seq;
 
