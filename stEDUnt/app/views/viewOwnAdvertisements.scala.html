@@ -110,6 +110,7 @@
 			    			<a href="@routes.Application.changeStudAdvertisement(studAdvertisements(index).getId(),2)">
 			   			 		<img class="center logo" src="@routes.Assets.at("images/edit-icon.png")" width="15"></h2>
 			   			 	</a>
+			   		 @(student.getLanguage().studies()): @studAdvertisements(index).getStudent().getStudies()</br>
 		   			 @(student.getLanguage().course()): @studAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @studAdvertisements(index).getDescription() </br>		   			 
 
@@ -156,6 +157,7 @@
 			   			 	</a>
 		    		</h2>
 		   			 @tutAdvertisements(index).getStudent().getName() @tutAdvertisements(index).getStudent().getLastName()</br>
+		   			 @(tutAdvertisements(index).getStudent().getLanguage().studies()): @(tutAdvertisements(index).getStudent().getStudies())</br>
 		   			 @(student.getLanguage().course()): @tutAdvertisements(index).getCourse()</br>
 		   			 @(student.getLanguage().description()): @tutAdvertisements(index).getDescription() </br>
 		   			 @(student.getLanguage().price()): @tutAdvertisements(index).getPrice() @(student.getLanguage().euroPerHour())  </br></br>

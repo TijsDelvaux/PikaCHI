@@ -96,6 +96,9 @@ public class Student extends Model{
 		return email;
 	}
 
+	public String getStudies(){
+		return studies;
+	}
 
 	
 	
